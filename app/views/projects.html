@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Progress</h1>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="project in projects | orderBy:'-seconds'">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ project.name }}</h3>
+        </div>
+        <div class="panel-body">
+            <dl>
+                <dt>Time:</dt>
+                <dd>{{ project.time }}</dd>
+            </dl>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="directory in project.directories">
+                {{ directory.path }}
+            </li>
+        </ul>
+    </div>
+</div>

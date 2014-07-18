@@ -9,7 +9,7 @@ angular
         'angularMoment'
     ]).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
-        RestangularProvider.setBaseUrl('api/index.php');
+        RestangularProvider.setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress;api/index.php');
         RestangularProvider.setDefaultHttpFields({
             withCredentials: true
         });

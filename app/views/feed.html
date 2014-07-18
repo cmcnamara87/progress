@@ -4,7 +4,7 @@
     </div>
 
     <div class="col-sm-8">
-        <div ng-repeat="post in posts">
+        <div ng-repeat="post in posts | limitTo:10">
             <post></post>
         </div>
     </div>

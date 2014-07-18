@@ -27,6 +27,13 @@ module.exports = function(grunt) {
             dist: 'dist'
         },
 
+        'gh-pages': {
+            options: {
+                base: '<%= yeoman.dist %>'
+            },
+            src: ['**']
+        },
+
         rsync: {
             options: {
                 args: ['--verbose'],
@@ -434,7 +441,12 @@ module.exports = function(grunt) {
         'rev',
         'usemin',
         'htmlmin',
-        'rsync'
+        // 'rsync'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'build',
+        'gh-pages'
     ]);
 
     grunt.registerTask('default', [

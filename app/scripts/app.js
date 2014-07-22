@@ -9,17 +9,18 @@ angular
         'angularMoment'
     ]).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
-        RestangularProvider.setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress;api/index.php');
+        RestangularProvider.setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');
         // RestangularProvider.setDefaultHttpFields({
-            //     withCredentials: true,
-            //     useXDomain: true
-            // });
+        //     withCredentials: true,
+        //     useXDomain: true
+        // });
 
 
-        RestangularProvider.setDefaultHeaders({
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
+        // RestangularProvider.setDefaultHeaders({
+        //     'Content-Type': 'application/json',
+        //     'X-Requested-With': 'XMLHttpRequest'
+        // });
+
         RestangularProvider.setDefaultHttpFields({
             'withCredentials': true
         });

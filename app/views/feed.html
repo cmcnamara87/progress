@@ -4,7 +4,8 @@
     </div>
 
     <div class="col-sm-8">
-        <div ng-repeat="post in posts | limitTo:10">
+        <div cg-busy="posts"></div>
+        <div ng-repeat="post in posts.$object | limitTo:10">
             <post></post>
         </div>
     </div>
@@ -15,11 +16,12 @@
                     Online
                 </h3>
             </div>
+            <div cg-busy="online"></div>
             <ul class="list-group">
-                <li class="list-group-item" ng-hide="online.length">
+                <li class="list-group-item" ng-hide="online.$object.length">
                     <span class="text-muted">No one's online.</span>
                 </li>
-                <li class="list-group-item" ng-repeat="user in online">
+                <li class="list-group-item" ng-repeat="user in online.$object">
                     <div>
                         <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div>
                         <a ui-sref="user.projects({userId: user.id})">
@@ -34,6 +36,20 @@
                 </li>
             </ul>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Get the Mac App
+                </h3>
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-warning form-control" href="https://github.com/cmcnamara87/progress-mac/releases/download/0.8/Progress.zip">
+                    <span class="glyphicon glyphicon-download"></span> Download
+                </a>
+            </div>
+        </div>
+
     </div>
 
 

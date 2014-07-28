@@ -27,10 +27,7 @@
                         <a ui-sref="user.projects({userId: user.id})">
                             {{ user.name }}
                         </a>
-                        (
-                        <a ui-sref="user.project({ userId: user.id, projectId: user.activeProject.id  })">
-                            {{ user.activeProject.name }}
-                        </a>)
+                        (<a ui-sref="user.project({ userId: user.id, projectId: user.activeProject.id  })">{{ user.activeProject.name }}</a>)
                         <div class="text-muted" am-time-ago="user.lastProgress.created" am-preprocess="unix"></div>
                     </div>
                 </li>
@@ -44,7 +41,7 @@
                 </h3>
             </div>
             <div class="panel-body">
-                <a class="btn btn-warning form-control" href="https://github.com/cmcnamara87/progress-mac/releases/download/0.8/Progress.zip">
+                <a class="btn btn-warning form-control" href="https://github.com/cmcnamara87/progress-mac/releases/download/v0.10/Progress.zip">
                     <span class="glyphicon glyphicon-download"></span> Download
                 </a>
             </div>

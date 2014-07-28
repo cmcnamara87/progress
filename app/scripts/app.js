@@ -16,21 +16,28 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).run(function($rootScope, $modal) { // instance-injector
+    }).run(function($rootScope, $modal, User, authService, Restangular) { // instance-injector
         $rootScope.$on('event:auth-loginRequired', function() {
             var modalInstance = $modal.open({
                 templateUrl: 'views/login-modal.html',
-                // controller: ModalInstanceCtrl,
-                // size: size,
-                // resolve: {
-                // items: function() {
-                // return $scope.items;
-                // }
-                // }
+                controller: ['$scope', '$modalInstance',
+                    function($scope, $modalInstance) {
+                        console.log('got to here!');
+                        $scope.login = function(user) {
+                            Restangular.all('users').login(user).then(function(currentUser) {
+                                // $rootscope.currentUser = user;
+                                // User.login(user).then(function() {
+                                $modalInstance.close(currentUser);
+                            });
+                        };
+                    }
+                ],
             });
 
-            modalInstance.result.then(function() {
+            modalInstance.result.then(function(currentUser) {
                 // $scope.selected = selectedItem;
+                $rootScope.currentUser = currentUser;
+                authService.loginConfirmed();
             }, function() {
                 // $log.info('Modal dismissed at: ' + new Date());
             });
@@ -44,12 +51,18 @@ angular
             RestangularProvider.setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');
         }
 
+        RestangularProvider.addElementTransformer('users', true, function(user) {
+            user.addRestangularMethod('login', 'post', 'login');
+            return user;
+        });
+
+        RestangularProvider.setDefaultHeaders({'Content-Type': undefined});
+
 
         // RestangularProvider.setDefaultHttpFields({
         //     withCredentials: true,
         //     useXDomain: true
         // });
-
 
         // RestangularProvider.setDefaultHeaders({
         //     'Content-Type': 'application/json',
@@ -59,7 +72,6 @@ angular
         RestangularProvider.setDefaultHttpFields({
             'withCredentials': true
         });
-
         /*
             
             splash - info about it
@@ -78,22 +90,25 @@ angular
         // $httpProvider.defaults.useXDomain = true;
         // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/me/feed');
+        $urlRouterProvider.otherwise('/');
         //
         // Now set up the states
         $stateProvider
             .state('me', {
                 url: '/me',
                 abstract: true,
-                resolve: {
-                    user: function(Restangular) {
-                        return Restangular.one('me').one('user').get();
-                    }
-                },
                 template: '<ui-view></ui-view>'
             })
             .state('me.feed', {
                 url: '/feed',
+                resolve: {
+                    user: ['Restangular', '$rootScope',
+                        function(Restangular, $rootScope) {
+                        return Restangular.one('me').one('user').get().then(function(currentUser) {
+                            $rootScope.currentUser = currentUser;
+                        });
+                    }]
+                },
                 controller: 'FeedCtrl',
                 templateUrl: 'views/feed.html'
             })

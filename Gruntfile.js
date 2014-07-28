@@ -248,6 +248,9 @@ module.exports = function(grunt) {
                     css: [
                         [/(\/bower_components\/bootstrap\/dist\/fonts)/g, 'god help me', function(match) {
                             return match.replace('/bower_components/bootstrap/dist/fonts', '../fonts');
+                        }],
+                        [/(\/bower_components\/fontawesome\/fonts)/g, 'god help me', function(match) {
+                            return match.replace('/bower_components/fontawesome/fonts', '../fonts');
                         }]
                     ]
                 }
@@ -337,6 +340,11 @@ module.exports = function(grunt) {
                         'images/{,*/}*.{webp}',
                         'fonts/*'
                     ]
+                }, {
+                    expand: true,
+                    cwd: '<%= yeoman.app %>/bower_components/fontawesome/fonts',
+                    dest: '<%= yeoman.dist %>/fonts',
+                    src: ['*']
                 }, {
                     expand: true,
                     cwd: '.tmp/images',

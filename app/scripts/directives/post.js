@@ -5,8 +5,6 @@ angular.module('progressClientApp')
         return {
             templateUrl: 'views/post.html',
             restrict: 'E',
-            link: function postLink() {
-                // element.text('this is the post directive');
-            }
+            link: function postLink() {}
         };
     });

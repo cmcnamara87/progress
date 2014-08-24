@@ -61,39 +61,14 @@ angular
             'Content-Type': undefined
         });
 
-
-        // RestangularProvider.setDefaultHttpFields({
-        //     withCredentials: true,
-        //     useXDomain: true
-        // });
-
-        // RestangularProvider.setDefaultHeaders({
-        //     'Content-Type': 'application/json',
-        //     'X-Requested-With': 'XMLHttpRequest'
-        // });
-
         RestangularProvider.setDefaultHttpFields({
             'withCredentials': true
         });
-        /*
-            
-            splash - info about it
-            register - sign up
-            user/id - stuff about a user
-            user/id/project/id - stuff about a project
-            me/feed - view your feed
-            me/user/id/edit - edit your profile
-
-         */
-        // profile page - user/id
-        // /me
-        // /feed
-        // 
 
         // $httpProvider.defaults.useXDomain = true;
         // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/landing');
         //
         // Now set up the states
         $stateProvider
@@ -115,6 +90,10 @@ angular
                 },
                 controller: 'FeedCtrl',
                 templateUrl: 'views/feed.html'
+            })
+            .state('landing', {
+                url: '/landing',
+                templateUrl: 'views/landing.html'
             })
             .state('home', {
                 url: '/',

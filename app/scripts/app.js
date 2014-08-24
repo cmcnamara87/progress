@@ -16,8 +16,10 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).run(function($rootScope, $modal, User, authService, Restangular) { // instance-injector
+    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.10/Progress.zip')
+    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl) { // instance-injector
         $rootScope.User = User;
+        $rootScope.downloadUrl = downloadUrl;
         $rootScope.$on('event:auth-loginRequired', function() {
             var modalInstance = $modal.open({
                 templateUrl: 'views/login-modal.html',
@@ -68,7 +70,7 @@ angular
         // $httpProvider.defaults.useXDomain = true;
         // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/landing');
         //
         // Now set up the states
         $stateProvider
@@ -94,6 +96,10 @@ angular
             .state('landing', {
                 url: '/landing',
                 templateUrl: 'views/landing.html'
+            })
+            .state('gettingStarted', {
+                url: '/getting-started',
+                templateUrl: 'views/getting-started.html'
             })
             .state('home', {
                 url: '/',

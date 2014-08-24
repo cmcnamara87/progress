@@ -34,6 +34,34 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
+        buildcontrol: {
+            options: {
+                dir: '<%= yeoman.dist %>',
+                commit: true,
+                push: true,
+                message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+            },
+            pages: {
+                options: {
+                    remote: 'git@github.com/cmcnamara87/progress.git',
+                    branch: 'gh-pages',
+                    tag: require('./package.json').version
+                }
+            },
+            heroku: {
+                options: {
+                    remote: 'git@heroku.com:example-heroku-webapp-1988.git',
+                    branch: 'master',
+                }
+            },
+            local: {
+                options: {
+                    remote: '../',
+                    branch: 'build'
+                }
+            }
+        },
+
         rsync: {
             options: {
                 args: ['--verbose'],
@@ -246,12 +274,16 @@ module.exports = function(grunt) {
                 assetsDirs: ['<%= yeoman.dist %>'],
                 patterns: {
                     css: [
-                        [/(\/bower_components\/bootstrap\/dist\/fonts)/g, 'god help me', function(match) {
-                            return match.replace('/bower_components/bootstrap/dist/fonts', '../fonts');
-                        }],
-                        [/(\/bower_components\/fontawesome\/fonts)/g, 'god help me', function(match) {
-                            return match.replace('/bower_components/fontawesome/fonts', '../fonts');
-                        }]
+                        [/(\/bower_components\/bootstrap\/dist\/fonts)/g, 'god help me',
+                            function(match) {
+                                return match.replace('/bower_components/bootstrap/dist/fonts', '../fonts');
+                            }
+                        ],
+                        [/(\/bower_components\/fontawesome\/fonts)/g, 'god help me',
+                            function(match) {
+                                return match.replace('/bower_components/fontawesome/fonts', '../fonts');
+                            }
+                        ]
                     ]
                 }
             }

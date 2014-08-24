@@ -1,1 +1,1 @@
-<div class="container"><h2>{{ project.name }}</h2><p><a ui-sref="user.projects({userId: project.user.id})">{{ project.user.name }}</a></p><h4 style="margin-bottom: 20px">Time Invested: {{ project.time }}</h4><div ng-repeat="post in posts | limitTo:10"><post></post></div></div>
+<div class="container"><h2>{{ project.name }}</h2><p><a ui-sref="user.projects({userId: project.user.id})">{{ project.user.name }}</a></p><h4 style="margin-bottom: 20px">Time Invested: {{ project.time }}</h4><div ng-repeat="post in posts"><post></post></div></div>

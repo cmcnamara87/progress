@@ -1,12 +1,17 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('User', function(Restangular) {
+    .factory('User', function(Restangular, $rootScope) {
 
         var User = Restangular.service('users');
 
         User.getOnline = function() {
             return Restangular.one('me').all('following').all('online').getList();
+        };
+
+        User.logout = function() {
+            Restangular.all('users').all('logout').post();
+            $rootScope.currentUser = null;
         };
 
         Restangular.extendModel('users', function(model) {

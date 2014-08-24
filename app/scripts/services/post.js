@@ -10,6 +10,10 @@ angular.module('progressClientApp')
         };
 
         Restangular.extendModel('posts', function(post) {
+            post.comments = post.comments || [];
+            _.each(post.comments, function(comment) {
+                comment.user.color = '#'+Math.floor(Math.random()*16777215).toString(16);
+            });
             post.isLiked = false;
             post.isOwner = false;
             var stopListening = $rootScope.$watch('currentUser', function(currentUser) {
@@ -28,6 +32,19 @@ angular.module('progressClientApp')
 
             post.delete = function() {
                 Restangular.one('me').one('posts', post.id).remove();
+            };
+
+            post.addComment = function(comment) {
+                Restangular.one('me').one('posts', post.id).all('comments').post(comment).then(function(savedComment) {
+                    _.extend(comment, savedComment);
+                });
+
+                if($rootScope.currentUser) {
+                    comment.user = $rootScope.currentUser;
+                }
+                post.comments.push(comment);
+                
+                post.$comment = {};
             };
             
             post.toggleLike = function() {

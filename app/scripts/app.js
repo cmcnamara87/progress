@@ -17,6 +17,7 @@ angular
         // delay: 300,
         // minDuration: 700
     }).run(function($rootScope, $modal, User, authService, Restangular) { // instance-injector
+        $rootScope.User = User;
         $rootScope.$on('event:auth-loginRequired', function() {
             var modalInstance = $modal.open({
                 templateUrl: 'views/login-modal.html',
@@ -56,7 +57,9 @@ angular
             return user;
         });
 
-        RestangularProvider.setDefaultHeaders({'Content-Type': undefined});
+        RestangularProvider.setDefaultHeaders({
+            'Content-Type': undefined
+        });
 
 
         // RestangularProvider.setDefaultHttpFields({
@@ -104,10 +107,11 @@ angular
                 resolve: {
                     user: ['Restangular', '$rootScope',
                         function(Restangular, $rootScope) {
-                        return Restangular.one('me').one('user').get().then(function(currentUser) {
-                            $rootScope.currentUser = currentUser;
-                        });
-                    }]
+                            return Restangular.one('me').one('user').get().then(function(currentUser) {
+                                $rootScope.currentUser = currentUser;
+                            });
+                        }
+                    ]
                 },
                 controller: 'FeedCtrl',
                 templateUrl: 'views/feed.html'
@@ -116,6 +120,11 @@ angular
                 url: '/',
                 controller: 'FeedCtrl',
                 templateUrl: 'views/feed.html'
+            })
+            .state('register', {
+                url: '/register',
+                controller: 'RegisterCtrl',
+                templateUrl: 'views/register.html'
             })
             .state('user', {
                 abstract: true,

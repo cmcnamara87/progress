@@ -34,6 +34,28 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
+        bump: {
+            options: {
+                // files: ['package.json'],
+                // updateConfigs: [],
+                commit: true,
+                commitMessage: 'Release v%VERSION%',
+                commitFiles: ['package.json'],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: true,
+                pushTo: 'upstream',
+                gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
+            }
+        },
+        changelog: {
+            options: {
+                // Task-specific options go here.
+            }
+        },
+
+
         buildcontrol: {
             options: {
                 dir: '<%= yeoman.dist %>',
@@ -491,8 +513,18 @@ module.exports = function(grunt) {
         // 'rsync'
     ]);
 
-    grunt.registerTask('deploy', [
+    grunt.registerTask('deploy:patch', [
         'build',
+        'bump-only:patch',
+        'changelog',
+        'bump-commit',
+        'buildcontrol:pages'
+    ]);
+    grunt.registerTask('deploy:minor', [
+        'build',
+        'bump-only:minor',
+        'changelog',
+        'bump-commit',
         'buildcontrol:pages'
     ]);
 

@@ -12,6 +12,7 @@ angular.module('progressClientApp')
         Restangular.extendModel('posts', function(post) {
             post.comments = post.comments || [];
             _.each(post.comments, function(comment) {
+                comment.user = comment.user || {};
                 comment.user.color = '#'+Math.floor(Math.random()*16777215).toString(16);
             });
             post.isLiked = false;

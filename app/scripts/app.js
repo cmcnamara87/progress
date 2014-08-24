@@ -68,7 +68,7 @@ angular
         // $httpProvider.defaults.useXDomain = true;
         // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/landing');
+        $urlRouterProvider.otherwise('/');
         //
         // Now set up the states
         $stateProvider

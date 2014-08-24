@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             },
             pages: {
                 options: {
-                    remote: 'https://github.com/cmcnamara87/progress-client.git',
+                    remote: 'https://github.com/cmcnamara87/progress.git',
                     branch: 'gh-pages',
                     tag: require('./package.json').version
                 }
@@ -493,7 +493,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('deploy', [
         'build',
-        'gh-pages'
+        'buildcontrol:pages'
     ]);
 
     grunt.registerTask('default', [

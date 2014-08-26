@@ -18,7 +18,7 @@ angular.module('progressClientApp')
         $scope.restart = restart;
         //////
         $interval(function() {
-            if($scope.timelapsePostIndex !== $scope.postsWithImages.length - 1) {
+            if($scope.timelapsePostIndex !== $scope.postsWithImages.length) {
                 var nextIndex = $scope.timelapsePostIndex++ % $scope.postsWithImages.length;
                 $scope.timelapsePost = $scope.postsWithImages[nextIndex];
             }

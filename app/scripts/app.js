@@ -17,9 +17,10 @@ angular
         // delay: 300,
         // minDuration: 700
     }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.10/Progress.zip')
-    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl) { // instance-injector
+    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams) { // instance-injector
         $rootScope.User = User;
         $rootScope.downloadUrl = downloadUrl;
+        $rootScope.$stateParams = $stateParams;
         $rootScope.$on('event:auth-loginRequired', function() {
             var modalInstance = $modal.open({
                 templateUrl: 'views/login-modal.html',
@@ -129,7 +130,7 @@ angular
                 templateUrl: 'views/projects.html'
             })
             .state('user.project', {
-                url: '/projects/:projectId',
+                url: '/projects/:projectId?timelapse',
                 resolve: {
                     project: ['Restangular', '$stateParams',
                         function(Restangular, $stateParams) {

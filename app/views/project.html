@@ -4,7 +4,7 @@
     </p>
     <h4 style="margin-bottom: 20px;">Time Invested: {{ project.time }}</h4>
 </div>
-<div style="background-color: #444; padding: 20px; margin: 40px 0; text-align: center; position: relative;">
+<div style="background-color: #444; padding: 20px; margin: 40px 0; text-align: center; position: relative;" ng-show="$stateParams.timelapse">
     <div class="container">
         <div style="color: white; font-size: 20px; width: 700px; margin: 0 auto;">
             <span am-time-ago="timelapsePost.created" am-preprocess="unix"></span>
@@ -15,7 +15,12 @@
     </div>
 </div>
 <div class="container">
-    <div ng-repeat="post in posts" ng-show="post.type == 'SCREENSHOT_COLLECTION'">
-        <post></post>
-    </div>
+	<div class="row">
+		<div class="col-sm-8">
+			<div ng-repeat="post in posts" ng-show="post.type == 'SCREENSHOT_COLLECTION'">
+		        <post></post>
+		    </div>		
+		</div>
+	</div>
+    
 </div>

@@ -1,3 +1,35 @@
+<a name="0.8.0"></a>
+## 0.8.0 (2014-08-26)
+
+
+#### Bug Fixes
+
+* **feed:**
+  * limit ((72e8d3c2))
+  * increase feed post limit visible ((0ae2935c))
+* **landing:** changed the copy again to emphasise journals ((06e20ae1))
+* **landing-page:**
+  * change journal to visual diary ((cd702122))
+  * more copy change ((b5ee730c))
+  * change copy on landing page ((36dd99b0))
+  * brand logo now links to landing page ((ef339b83))
+* **navbar:** brand logo and login register appear when they should ((13c52723))
+* **post:** fix error caused by missing user on some comments ((c357f443))
+* **project:** increase post limit visible ((746f71c6))
+* **project-page:** only show entries that have photos ((aec9f836))
+* **time-lapse:** fix time-lapse not including last post ((dbdf6a16))
+
+
+#### Features
+
+* **build:**
+  * add grunt bump and changelog ((f7a72ff1))
+  * change build control options ((ecba3f6f))
+  * add build control tool ((8f8a36d4))
+* **landing-page:** add basic landing page ((d32fb74d))
+* **project-page:** add project timelapse ((fb75da76))
+
+
 <a name="0.6.0"></a>
 ## 0.6.0 (2014-08-24)
 

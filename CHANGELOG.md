@@ -1,3 +1,17 @@
+<a name="0.9.1"></a>
+### 0.9.1 (2014-08-26)
+
+
+#### Bug Fixes
+
+* **time-lapse:** remove time lapse and make optional ((6c299863))
+
+
+#### Features
+
+* **post:** add background color to images ((8dfc1716))
+
+
 <a name="0.9.0"></a>
 ## 0.9.0 (2014-08-26)
 

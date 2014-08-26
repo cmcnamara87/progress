@@ -6,10 +6,10 @@
 </div>
 <div style="background-color: #444; padding: 20px; margin: 40px 0; text-align: center; position: relative;">
     <div class="container">
-        <div style="color: white; font-size: 20px; height: 500px; width: 700px; margin: 0 auto;">
+        <div style="color: white; font-size: 20px; width: 700px; margin: 0 auto;">
             <span am-time-ago="timelapsePost.created" am-preprocess="unix"></span>
             <p style="margin: 15px 0;" ng-if="timelapsePost.text">{{ timelapsePost.text }}</p>
-            <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ timelapsePost.collection.files[0].name }}" alt="" class="img-responsive" style="max-width: 100%; max-height: 100%; width: 100%;">
+            <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ timelapsePost.collection.files[0].name }}" alt="" class="img-responsive" style="max-width: 100%; width: 100%;">
         </div>
         <button style="margin: auto; width: 300px; height: 75px; position: absolute; top: 0; bottom: 0; left: 0; right: 0; " class="btn btn-primary btn-lg" ng-click="restart()" ng-show="timelapsePostIndex === postsWithImages.length">Play Again</button>
     </div>

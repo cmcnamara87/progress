@@ -52,7 +52,8 @@ angular
         if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
             RestangularProvider.setBaseUrl('api/index.php');
         } else {
-            RestangularProvider.setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');
+            RestangularProvider
+            .setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');
         }
 
         RestangularProvider.addElementTransformer('users', true, function(user) {
@@ -134,16 +135,37 @@ angular
                 resolve: {
                     project: ['Restangular', '$stateParams',
                         function(Restangular, $stateParams) {
-                            return Restangular.one('users', $stateParams.userId).one('projects', $stateParams.projectId).get();
+                            return Restangular.one('users', $stateParams.userId)
+                            .one('projects', $stateParams.projectId).get();
                         }
                     ],
                     posts: ['Restangular', '$stateParams',
                         function(Restangular, $stateParams) {
-                            return Restangular.one('users', $stateParams.userId).one('projects', $stateParams.projectId).all('posts').getList();
+                            return Restangular.one('users', $stateParams.userId)
+                            .one('projects', $stateParams.projectId).all('posts').getList();
                         }
                     ]
                 },
                 controller: 'ProjectCtrl',
                 templateUrl: 'views/project.html'
+            })
+            .state('user.diary', {
+                url: '/diary/:projectId?timelapse',
+                resolve: {
+                    project: ['Restangular', '$stateParams',
+                        function(Restangular, $stateParams) {
+                            return Restangular.one('users', $stateParams.userId)
+                            .one('projects', $stateParams.projectId).get();
+                        }
+                    ],
+                    posts: ['Restangular', '$stateParams',
+                        function(Restangular, $stateParams) {
+                            return Restangular.one('users', $stateParams.userId)
+                            .one('projects', $stateParams.projectId).all('posts').getList();
+                        }
+                    ]
+                },
+                controller: 'DiaryCtrl',
+                templateUrl: 'views/diary.html'
             });
     });

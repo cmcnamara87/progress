@@ -11,7 +11,7 @@ angular.module('progressClientApp')
         $scope.posts = posts;
         console.log('posts', posts);
         $scope.postsWithImages = _.filter(posts, function(post) {
-        	return post.type === 'SCREENSHOT_COLLECTION';
+            return post.type === 'SCREENSHOT_COLLECTION';
         }).reverse();
         $scope.timelapsePostIndex = 0;
         $scope.timelapsePost = $scope.postsWithImages[$scope.timelapsePostIndex++] || null;
@@ -22,7 +22,6 @@ angular.module('progressClientApp')
                 var nextIndex = $scope.timelapsePostIndex++ % $scope.postsWithImages.length;
                 $scope.timelapsePost = $scope.postsWithImages[nextIndex];
             }
-        	
         }, 500);
         function restart() {
             $scope.timelapsePostIndex = 0;

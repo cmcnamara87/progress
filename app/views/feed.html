@@ -27,7 +27,7 @@
                         <a ui-sref="user.projects({userId: user.id})">
                             {{ user.name }}
                         </a>
-                        - <a ui-sref="user.project({ userId: user.id, projectId: user.activeProject.id  })">{{ user.activeProject.name }}</a>
+                        - <a ui-sref="user.diary({ userId: user.id, projectId: user.activeProject.id  })">{{ user.activeProject.name }}</a>
                         <div class="text-muted" am-time-ago="user.lastProgress.created" am-preprocess="unix"></div>
                     </div>
                 </li>

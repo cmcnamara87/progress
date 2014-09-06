@@ -3,9 +3,12 @@
         <a href="" class="pull-right text-muted" ng-show="post.isOwner" ng-click="post.delete()"><i class="fa fa-times"></i></a>
 
         <div class="media" style="margin-top: 0;">
-            <div class="pull-left" style="width: 48px; height: 48px; background-color: #428bca; border: 1px solid #397FBD">
-
+            <div class="pull-left">
+                <img style="width:40px; height:40px;" ng-src="{{ post.user.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">
             </div>
+            <!--<div class="pull-left" style="width: 48px; height: 48px; background-color: #428bca; border: 1px solid #397FBD">
+
+            </div>-->
             <div class="media-body">
                 <div ng-switch="post.type">
                     <div ng-switch-when="SCREENSHOT_COLLECTION">
@@ -43,7 +46,8 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="comment in post.comments">
             <div class="media" style="margin-top: 0;">
-                <div class="pull-left" style="width: 30px; height: 30px; background-color: {{ comment.user.color }};">
+                <div class="pull-left">
+                    <img style="width:40px; height:40px;" ng-src="{{ comment.user.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">
                 </div>
                 <div class="media-body">
                     <a href="">{{ comment.user.name }}</a>
@@ -53,7 +57,8 @@
         </li>
         <li class="list-group-item">
             <div class="media" style="margin-top: 0;">
-                <div class="pull-left" style="width: 30px; height: 30px; background-color: #428bca;">
+                <div class="pull-left">
+                    <img style="width:30px; height:30px;" ng-src="{{ currentUser.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">
                 </div>
                 <div class="media-body">
                     <form action="" ng-submit="post.addComment(post.$comment)">

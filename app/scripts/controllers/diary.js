@@ -1,10 +1,19 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .controller('DiaryCtrl', function($scope, $filter, project, posts) {
+    .controller('DiaryCtrl', function($scope, $filter, project, posts, Restangular, User) {
         var vm = $scope;
         vm.entires = null;
         vm.project = project;
+        vm.posts = posts;
+
+        // _.each(posts, function(post) {
+            _.each(project.directories, function(directory) {
+                console.log('directories');
+                var parts = directory.path.split('/');
+                directory.folderName = parts[parts.length - 1];
+            });
+        // });
 
         // Only screenshots
         vm.posts = _.filter(posts, function(post) {
@@ -24,4 +33,7 @@ angular.module('progressClientApp')
 			};
 		});
 		vm.dates = _.sortBy(dates, 'created').reverse();
+
+
+        User.getLoggedIn();
     });

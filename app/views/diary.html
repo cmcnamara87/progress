@@ -26,16 +26,44 @@
         /*text-align: center;*/
     }
     .images {
-     	margin-bottom: 36px;
+        margin-bottom: 36px;
         margin-top: 24px;
     }
     </style>
     <div class="container">
         <h1>{{ project.name }}</h1>
-        <img ng-src="http://dummyimage.com/40x40/dddddd/dddddd">
-        <p class="project-user">
-            {{ project.user.name }}
-        </p>
+        <div style="text-align: center">
+            <img style="width:40px; height:40px;" ng-src="{{ project.user.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">
+            <p class="project-user">
+                {{ project.user.name }}
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div ng-show="currentUser.id == project.user.id && !posts.length">
+                    <div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px;">
+                        Your project is <strong>ready to go</strong>. Progress is now tracking when you save files in
+                        <em ng-repeat="directory in project.directories">"{{ directory.folderName }}"</em>
+
+                        <div style="margin-top: 20px">
+                            When you have started working:
+                            <br/><strong>Upload a picture by pressing</strong>
+                            <em>CMD</em>+
+                            <em>SHIFT</em>+
+                            <em>4</em>.
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-show="currentUser.id != project.user.id && !posts.length">
+                    <div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px;">
+                        {{ project.user.name }} hasn't added anything yet. Maybe bug them to get some work done ;)
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div ng-repeat="date in dates">
             <div class="row">

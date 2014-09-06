@@ -9,6 +9,12 @@ angular.module('progressClientApp')
             return Restangular.one('me').all('following').all('online').getList();
         };
 
+        User.getLoggedIn = function() {
+            Restangular.one('me').one('user').get().then(function(currentUser) {
+                $rootScope.currentUser = currentUser;
+            });
+        };
+
         User.logout = function() {
             Restangular.all('users').all('logout').post();
             $rootScope.currentUser = null;

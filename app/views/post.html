@@ -12,7 +12,7 @@
                         <p style="margin-bottom: 3px;">
                             <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
                             uploaded a screenshot for
-                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -22,7 +22,7 @@
                         <p style="margin-bottom: 3px;">
                             <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
                             started working on
-                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>

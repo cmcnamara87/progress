@@ -46,6 +46,10 @@ angular
                 // $log.info('Modal dismissed at: ' + new Date());
             });
         });
+
+        // Get user if logged in
+        User.getLoggedIn();
+        
     }).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
         console.log('host name', document.location.hostname);
 

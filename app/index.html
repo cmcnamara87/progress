@@ -41,8 +41,8 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" ui-sref="me.feed" ng-show="currentUser">Progress</a>
-                <a class="navbar-brand" ui-sref="landing" ng-hide="currentUser">Progress</a>
+                <a class="navbar-brand" ui-sref="me.feed" ng-show="currentUser" ng-cloak>Progress</a>
+                <a class="navbar-brand" ui-sref="landing" ng-hide="currentUser" ng-cloak>Progress</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,8 +74,8 @@
                     </li>
                     <li><a ui-sref="register" ng-if="!currentUser">Register</a>
                     </li>
-                    <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle">{{ currentUser.name }} <span class="caret"></span></a>
+                    <li class="dropdown" ng-show="currentUser.id" style="cursor: pointer;">
+                        <a class="dropdown-toggle" href >{{ currentUser.name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a ui-sref="user.projects({userId: currentUser.id})">My Projects</a>

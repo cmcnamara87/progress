@@ -9,7 +9,8 @@ angular
         'angularMoment',
         'cgBusy',
         'http-auth-interceptor',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'angular-loading-bar'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,

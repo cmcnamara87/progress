@@ -1,11 +1,8 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .controller('ProjectsCtrl', function($scope, projects) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-        $scope.projects = projects;
+    .controller('ProjectsCtrl', function($scope, projects, user) {
+        var vm = $scope;
+        vm.projects = projects;
+        vm.user = user;
     });

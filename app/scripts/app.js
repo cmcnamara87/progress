@@ -126,6 +126,9 @@ angular
                             return Restangular.one('users', $stateParams.userId).all('projects').getList();
                         }
                     ],
+                    user: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+                        return Restangular.one('users', $stateParams.userId).get();
+                    }]
                 },
                 controller: 'ProjectsCtrl',
                 templateUrl: 'views/projects.html'

@@ -1,12 +1,12 @@
 <div><style>body {
         background-color: white;
-        font: normal 18px/30px"Georgia Pro", georgia, serif
+        font: normal 22px/1.5 "Georgia Pro", georgia, serif
     }
     h1 {
         text-align: center;
         font-family: "Franklin ITC Pro Bold", sans-serif;
-        font-size: 48px;
-        line-height: 56px;
+        font-size: 60px;
+        line-height: 1.5;
         font-weight: bold;
     }
     .project-user {
@@ -14,11 +14,16 @@
     }
     h2 {
         /*text-align: center;*/
-        color: #ba3925;
+        /*color: #ba3925;*/
         font-size: 24px;
-        line-height: 30px;
+        font-size: 36px;
+        font-weight: bold;
+        /*line-height: 30px;*/
+        line-height: 1.5;
         margin-top: 48px;
         margin-bottom: 12px;
+        padding-top: 40px;
+        border-top: 1px solid #ddd;
     }
     h3 {
         /*text-align: center;*/
@@ -26,4 +31,4 @@
     .images {
         margin-bottom: 36px;
         margin-top: 24px;
-    }</style><div class="container"><h1>{{ project.name }}</h1><div style="text-align: center"><img style="width:40px; height:40px" ng-src="{{ project.user.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt=""><p class="project-user">{{ project.user.name }}</p></div><div class="row"><div class="col-sm-8 col-sm-offset-2"><div ng-show="currentUser.id == project.user.id && !posts.length"><div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px">Your project is <strong>ready to go</strong>. Progress is now tracking when you save files in <em ng-repeat="directory in project.directories">"{{ directory.folderName }}"</em><div style="margin-top: 20px">When you have started working:<br><strong>Upload a picture by pressing</strong> <em>CMD</em>+ <em>SHIFT</em>+ <em>4</em>.</div></div></div><div ng-show="currentUser.id != project.user.id && !posts.length"><div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px">{{ project.user.name }} hasn't added anything yet. Maybe bug them to get some work done ;)</div></div></div></div><div ng-repeat="date in dates"><div class="row"><div class="col-sm-8 col-sm-offset-2"><h2>{{ date.date }}</h2><h3>4hrs</h3></div></div><div ng-repeat="entry in date.entries"><div class="row"><div class="col-sm-8 col-sm-offset-2"><p>{{ entry.text }}</p></div></div><div style="text-align: center" class="images"><img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ entry.collection.files[0].name }}" alt="" style="max-width: 100%"></div></div></div></div></div>
+    }</style><div class="container"><h1>{{ project.name }}</h1><div style="text-align: center"><p class="project-user"><img style="width:40px; height:40px" ng-src="{{ project.user.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt=""> {{ project.user.name }}</p></div><p style="text-align: center" class="text-muted">{{ project.time }}</p><div class="row"><div class="col-sm-8 col-sm-offset-2"><div ng-show="currentUser.id == project.user.id && !posts.length"><div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px">Your project is <strong>ready to go</strong>. Progress is now tracking when you save files in <em ng-repeat="directory in project.directories">"{{ directory.folderName }}"</em><div style="margin-top: 20px">When you have started working:<br><strong>Upload a picture by pressing</strong> <em>CMD</em>+ <em>SHIFT</em>+ <em>4</em>.</div></div></div><div ng-show="currentUser.id != project.user.id && !posts.length"><div style="border: 1px solid #ddd; background-color: #fefefe; padding: 40px">{{ project.user.name }} hasn't added anything yet. Maybe bug them to get some work done ;)</div></div></div></div><div ng-repeat="date in dates"><div class="row"><div class="col-sm-8 col-sm-offset-2"><h2>{{ date.date }}</h2><!-- <h3>4hrs</h3> --></div></div><div ng-repeat="entry in date.entries"><div class="row"><div class="col-sm-8 col-sm-offset-2"><p>{{ entry.text }}</p></div></div><div style="text-align: center" class="images"><img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ entry.collection.files[0].name }}" alt="" style="max-width: 100%"></div></div></div></div></div>

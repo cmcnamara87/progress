@@ -16,12 +16,11 @@
                     Online
                 </h3>
             </div>
-            <div cg-busy="online"></div>
             <ul class="list-group">
-                <li class="list-group-item" ng-hide="online.$object.length">
+                <li class="list-group-item" ng-hide="online.length">
                     <span class="text-muted">No one's online.</span>
                 </li>
-                <li class="list-group-item" ng-repeat="user in online.$object | limitTo:10">
+                <li class="list-group-item" ng-repeat="user in online | limitTo:10">
                     <div>
                         <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div>
                         <a ui-sref="user.projects({userId: user.id})">
@@ -33,6 +32,28 @@
                 </li>
             </ul>
         </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Offline
+                </h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-hide="offline.length">
+                    <span class="text-muted">No one's online.</span>
+                </li>
+                <li class="list-group-item" ng-repeat="user in offline | limitTo:10">
+                    <div>
+                        <div style="display: inline-block; width: 10px; height: 10px; background-color: #ddd; margin-right:3px;"></div>
+                        <a ui-sref="user.projects({userId: user.id})">
+                            {{ user.name }}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
 
         <div class="panel panel-default">
             <div class="panel-heading">

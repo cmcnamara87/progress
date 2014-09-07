@@ -35,8 +35,8 @@
             </div>
         </div>
         <p style="margin: 15px 0;" ng-if="post.text">{{ post.text }}</p>
-        <a href="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" target="_blank" ng-repeat="file in post.collection.files" style="display: block; border: 1px solid #ddd; margin: 10px 0; background-color: #eee;">
-            <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" alt="" class="img-responsive">
+        <a href="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" target="_blank" ng-repeat="file in post.collection.files" style="display: block; border: 1px solid #ddd; margin: 10px 0; background-color: #eee; text-align: center;">
+            <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" alt="" class="img-responsive" style="display: inline-block;">
         </a>
         <div style="margin-top: 10px;">
             <button class="btn btn-default btn-xs" ng-click="post.toggleLike()" ng-class="{'btn-primary': post.isLiked}"><i class="fa fa-thumbs-o-up"></i> Like {{ post.likes.length }}</button>

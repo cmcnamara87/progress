@@ -1,6 +1,6 @@
 {
   "name": "progressclient",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -17,7 +17,7 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.10/Progress.zip')
+    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.11/Progress.zip')
     .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams) { // instance-injector
         $rootScope.User = User;
         $rootScope.downloadUrl = downloadUrl;
@@ -77,10 +77,28 @@ angular
         // $httpProvider.defaults.useXDomain = true;
         // delete $httpProvider.defaults.headers.common['X-Requested-With'];
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/landing');
+        $urlRouterProvider.otherwise('/');
         //
         // Now set up the states
         $stateProvider
+            .state('home', {
+                url: '/',
+                resolve: {
+                    user: ['User',
+                        function(User) {
+                            return User.getLoggedIn();
+                        }
+                    ]
+                },
+                controller: ['$state', 'user', function($state, user) {
+                    console.log('root page', user);
+                    if(user) {
+                        $state.go('me.feed');
+                    } else {
+                        $state.go('landing');
+                    }
+                }]
+            })
             .state('me', {
                 url: '/me',
                 abstract: true,
@@ -107,11 +125,6 @@ angular
             .state('gettingStarted', {
                 url: '/getting-started',
                 templateUrl: 'views/getting-started.html'
-            })
-            .state('home', {
-                url: '/',
-                controller: 'FeedCtrl',
-                templateUrl: 'views/feed.html'
             })
             .state('register', {
                 url: '/register',

@@ -10,8 +10,11 @@ angular.module('progressClientApp')
         };
 
         User.getLoggedIn = function() {
-            Restangular.one('session').one('user').get().then(function(currentUser) {
+            return Restangular.one('session').one('user').get().then(function(currentUser) {
                 $rootScope.currentUser = currentUser;
+                return currentUser;
+            }, function() {
+                return null;
             });
         };
 

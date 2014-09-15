@@ -1,3 +1,12 @@
+<a name="0.12.3"></a>
+### 0.12.3 (2014-09-15)
+
+
+#### Bug Fixes
+
+* **homepage:** fix homepage redirecting ((9a392ac9))
+
+
 <a name="0.12.2"></a>
 ### 0.12.2 (2014-09-15)
 

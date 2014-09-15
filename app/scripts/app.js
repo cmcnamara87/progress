@@ -17,7 +17,7 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.11/Progress.zip')
+    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.12/Progress.zip')
     .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams) { // instance-injector
         $rootScope.User = User;
         $rootScope.downloadUrl = downloadUrl;

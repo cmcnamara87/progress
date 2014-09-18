@@ -2,31 +2,50 @@
 
 angular.module('progressClientApp')
     .controller('FeedCtrl', function($scope, Restangular, Post, User) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-
-		console.log('hello world?');
         var vm = $scope;
-        
-        // $scope.cats = Restangular.one('me').all('following').all('posts').getList();
-		$scope.posts = Post.getFeed();
-        User.getOnline().then(function(onlineUsers) {
-            $scope.online = onlineUsers;
-            console.log('got onlie');
-            // Get offline
+        vm.posts = null;
+        vm.online = null;
+        vm.post = post;
+        activate();
+
+        /////////
+
+        function activate() {
+            getPosts();
+            getOnline().then(function() {
+                getOffline();
+            });
+        }
+
+        function getPosts() {
+            return Post.getFeed().then(function(posts) {
+                vm.posts = posts;
+            });
+        }
+
+        function getOnline() {
+            return User.getOnline().then(function(onlineUsers) {
+                vm.online = onlineUsers;
+            });
+        }
+
+        function getOffline() {
             Restangular.one('me').all('following').getList().then(function(allUsers) {
-                // console.log('getting offliem', allUsers);
-                // vm.offline = allUsers;
-                vm.offline = _.reject(allUsers, function(user) {
-                    return _.find(onlineUsers, function(yo) {
-                        return yo.id === user.id;
+                
+                // Remove all online users from offline
+                vm.offline = _.reject(allUsers, function(allUser) {
+                    return _.find(vm.online, function(onlineUser) {
+                        return onlineUser.id === allUser.id;
                     });
-                    // return false;
-                    // return _.find(onlineUsers, {id: user.id});
                 });
             });
-        });
+        }
+
+        function post(text) {
+            Restangular.one('me').all('posts').post({
+                text: text
+            }).then(function(post) {
+                vm.posts.unshift(post);
+            });
+        }
     });

@@ -11,6 +11,17 @@
             </div>-->
             <div class="media-body">
                 <div ng-switch="post.type">
+                    <div ng-switch-when="TEXT">
+                        <p style="margin-bottom: 3px;">
+                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
+                            wrote in
+                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                        </p>
+                        <p class="text-muted">
+                            <span am-time-ago="post.created" am-preprocess="unix"></span>
+                        </p>
+                    </div>
+
                     <div ng-switch-when="SCREENSHOT_COLLECTION">
                         <p style="margin-bottom: 3px;">
                             <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>

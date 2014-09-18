@@ -10,7 +10,8 @@ angular
         'cgBusy',
         'http-auth-interceptor',
         'ui.bootstrap',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        'monospaced.elastic'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,
@@ -111,6 +112,7 @@ angular
                         function(Restangular, $rootScope) {
                             return Restangular.one('me').one('user').get().then(function(currentUser) {
                                 $rootScope.currentUser = currentUser;
+                                return currentUser;
                             });
                         }
                     ]

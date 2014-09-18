@@ -40,6 +40,8 @@ angular.module('progressClientApp')
                     _.extend(comment, savedComment);
                 });
 
+                
+
                 if($rootScope.currentUser) {
                     comment.user = $rootScope.currentUser;
                 }

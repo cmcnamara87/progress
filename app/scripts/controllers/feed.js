@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .controller('FeedCtrl', function($scope, Restangular, Post, User) {
+    .controller('FeedCtrl', function($scope, Restangular, Post, User, $rootScope, $log) {
         var vm = $scope;
         vm.posts = null;
         vm.online = null;
+        vm.activeProject = null;
         vm.post = post;
         activate();
 
@@ -26,6 +27,7 @@ angular.module('progressClientApp')
         function getOnline() {
             return User.getOnline().then(function(onlineUsers) {
                 vm.online = onlineUsers;
+                vm.activeProject = _.findWhere(vm.online, {id: $rootScope.currentUser.id}).activeProject;
             });
         }
 

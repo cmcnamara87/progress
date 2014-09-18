@@ -4,13 +4,18 @@
     </div>
 
     <div class="col-sm-8">
-        <div class="panel panel-default">
+        <div class="panel panel-default" ng-show="activeProject">
             <div class="panel-body">
                 <form role="form">
-                    <input class="form-control" type="text" placeholder="What are you working on?" ng-model="text" />
+                    <textarea msd-elastic="\n" placeholder="What's going on?" ng-model="text" class="form-control"></textarea>
                 </form>
             </div>
             <div class="panel-footer text-right">
+                <div class="pull-left">
+                    <a ui-sref="user.diary({ userId: currentUser.id, projectId: activeProject.id  })" class="btn btn-link">
+                        <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div> {{ activeProject.name }}
+                    </a>
+                </div>
                 <button type="button" class="btn btn-primary" ng-click="post(text)">Post</button>
             </div>
         </div>

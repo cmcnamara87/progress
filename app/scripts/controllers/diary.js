@@ -15,7 +15,7 @@ angular.module('progressClientApp')
 
         // Only screenshots
         vm.posts = _.filter(posts, function(post) {
-            return post.type === 'SCREENSHOT_COLLECTION';
+            return post.type === 'SCREENSHOT_COLLECTION' || post.type === 'TEXT' || post.type === 'STARTED_WORKING';
         }).reverse();
 
         _.each(vm.posts, function(post) {
@@ -29,6 +29,9 @@ angular.module('progressClientApp')
                 created: date[0].created,
                 entries: date
             };
+        });
+        _.each(dates, function(date) {
+            date.entries = _.reject(date.entries, {type: 'STARTED_WORKING'});
         });
         vm.dates = _.sortBy(dates, 'created').reverse();
     });

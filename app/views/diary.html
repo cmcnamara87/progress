@@ -81,16 +81,23 @@
                 </div>
             </div>
 
+            <div class="row" ng-hide="date.entries.length">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="text-muted">
+                        No content added.
+                    </div>
+                </div>
+            </div>
+
             <div ng-repeat="entry in date.entries">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <p>
                             {{ entry.text }}
                         </p>
-
                     </div>
                 </div>
-                <div style="text-align: center;" class="images">
+                <div style="text-align: center;" class="images" ng-show="entry.collection.files.length">
                     <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ entry.collection.files[0].name }}" alt="" style="max-width: 100%;">
                 </div>
 

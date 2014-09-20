@@ -1,3 +1,12 @@
+<a name="0.15.5"></a>
+### 0.15.5 (2014-09-20)
+
+
+#### Bug Fixes
+
+* **feed:** offline users works when offline ((25f6c269))
+
+
 <a name="0.15.4"></a>
 ### 0.15.4 (2014-09-20)
 

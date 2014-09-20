@@ -1,5 +1,5 @@
     <style>
-    body {
+    .wrapper {
         background-color: white;
         font: normal 18px/30px"Georgia Pro", georgia, serif
     }
@@ -29,24 +29,30 @@
         margin-top: 24px;
     }
     </style>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2" style="text-align: center;">
-            <img style="width:125px; height:125px;" ng-src="{{ user.picture || 'http://dummyimage.com/125x125/dddddd/dddddd' }}" alt="">
-            <h1>
-                {{ user.name }}
-            </h1>
+<div class="wrapper">
+    <div class="container">
+    
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2" style="text-align: center;">
+                <img style="width:125px; height:125px;" ng-src="{{ user.picture || 'http://dummyimage.com/125x125/dddddd/dddddd' }}" alt="">
+                <h1>
+                    {{ user.name }}
+                </h1>
+            </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div ng-repeat="project in projects | orderBy:'-seconds'" style="padding: 20px; border-bottom: 1px solid #eee">
-                <h2>
-                    <a ui-sref="user.diary({userId: project.user.id, projectId: project.id })">
-                        {{ project.name }}    
-                    </a>
-                </h2>
+    
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div ng-repeat="project in projects | orderBy:'-seconds'" style="padding: 20px; border-bottom: 1px solid #eee">
+                    <h2>
+                        <a ui-sref="user.diary({userId: project.user.id, projectId: project.id })">
+                            {{ project.name }}    
+                        </a>
+                    </h2>
+                    <p class="text-muted">
+                        {{ project.time }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>

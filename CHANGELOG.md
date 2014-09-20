@@ -1,3 +1,12 @@
+<a name="0.15.3"></a>
+### 0.15.3 (2014-09-20)
+
+
+#### Bug Fixes
+
+* **homepage:** fix icons too large in nabber ((df3ad43f))
+
+
 <a name="0.15.2"></a>
 ### 0.15.2 (2014-09-20)
 

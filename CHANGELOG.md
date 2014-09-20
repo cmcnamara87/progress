@@ -1,3 +1,12 @@
+<a name="0.15.4"></a>
+### 0.15.4 (2014-09-20)
+
+
+#### Bug Fixes
+
+* **notifications:** fix notifications loading ((f652d45d))
+
+
 <a name="0.15.3"></a>
 ### 0.15.3 (2014-09-20)
 

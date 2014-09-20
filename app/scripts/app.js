@@ -32,6 +32,7 @@ angular
                         console.log('got to here!');
                         $scope.login = function(user) {
                             Restangular.all('users').login(user).then(function(currentUser) {
+                                notificationService.loadNotifications();
                                 // $rootscope.currentUser = user;
                                 // User.login(user).then(function() {
                                 $modalInstance.close(currentUser);
@@ -51,8 +52,10 @@ angular
         });
 
         // Get user if logged in
-        User.getLoggedIn().then(function() {
-            notificationService.loadNotifications();
+        User.getLoggedIn().then(function(currentUser) {
+            if(currentUser) {
+                notificationService.loadNotifications();
+            }
         });
         
     }).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
@@ -111,10 +114,11 @@ angular
             .state('me.feed', {
                 url: '/feed',
                 resolve: {
-                    user: ['Restangular', '$rootScope',
-                        function(Restangular, $rootScope) {
+                    user: ['Restangular', '$rootScope', 'notificationService',
+                        function(Restangular, $rootScope, notificationService) {
                             return Restangular.one('me').one('user').get().then(function(currentUser) {
                                 $rootScope.currentUser = currentUser;
+                                notificationService.loadNotifications();
                                 return currentUser;
                             });
                         }

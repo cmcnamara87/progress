@@ -1,3 +1,12 @@
+<a name="0.14.3"></a>
+### 0.14.3 (2014-09-20)
+
+
+#### Features
+
+* **notifictions:** add notifications ((a970e0eb))
+
+
 <a name="0.14.2"></a>
 ### 0.14.2 (2014-09-20)
 

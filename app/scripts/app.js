@@ -19,9 +19,10 @@ angular
         // delay: 300,
         // minDuration: 700
     }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.12/Progress.zip')
-    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams) { // instance-injector
+    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams, notificationService) { 
         $rootScope.User = User;
         $rootScope.downloadUrl = downloadUrl;
+        $rootScope.notificationService = notificationService;
         $rootScope.$stateParams = $stateParams;
         $rootScope.$on('event:auth-loginRequired', function() {
             var modalInstance = $modal.open({
@@ -50,7 +51,9 @@ angular
         });
 
         // Get user if logged in
-        User.getLoggedIn();
+        User.getLoggedIn().then(function() {
+            notificationService.loadNotifications();
+        });
         
     }).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
         console.log('host name', document.location.hostname);
@@ -152,6 +155,18 @@ angular
                 },
                 controller: 'ProjectsCtrl',
                 templateUrl: 'views/projects.html'
+            })
+            .state('post', {
+                url: '/posts/:postId',
+                resolve: {
+                    post: ['Restangular', '$stateParams',
+                        function(Restangular, $stateParams) {
+                            return Restangular.one('posts', $stateParams.postId).get();
+                        }
+                    ]
+                },
+                controller: 'SinglePostCtrl',
+                templateUrl: 'views/singlepost.html'
             })
             .state('user.project', {
                 url: '/projects/:projectId?timelapse',

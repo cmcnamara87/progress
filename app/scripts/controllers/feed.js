@@ -27,7 +27,9 @@ angular.module('progressClientApp')
         function getOnline() {
             return User.getOnline().then(function(onlineUsers) {
                 vm.online = onlineUsers;
-                vm.activeProject = _.findWhere(vm.online, {id: $rootScope.currentUser.id}).activeProject;
+                if($rootScope.currentUser.id) {
+                    vm.activeProject = _.findWhere(vm.online, {id: $rootScope.currentUser.id}).activeProject;    
+                }
             });
         }
 

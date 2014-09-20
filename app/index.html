@@ -70,11 +70,15 @@
             <button type="submit" class="btn btn-default">Submit</button>
           </form>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" ng-show="currentUser.id">
+                    <li class="dropdown" ng-show="currentUser.id && notificationService.notifications.length">
                         <a class="dropdown-toggle" href ><i class="fa fa-bell"></i> {{ notificationService.notifications.length }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li ng-repeat="notification in notificationService.notifications">
-                                <a ui-sref="post({postId: notification.postId})">{{ notification.text }}</a>
+                                <a ng-click="notification.markAsRead()" ui-sref="post({postId: notification.postId})">
+                                    <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
+
+                                   {{ notification.text }}
+                                </a>
                             </li>
                         </ul>
                     </li>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('notificationService', function(Restangular) {
+    .factory('notificationService', function(Restangular, Notification) {
         var service = {
             notifications: [],
             loadNotifications: loadNotifications
@@ -9,7 +9,7 @@ angular.module('progressClientApp')
         return service;
 
         function loadNotifications() {
-            return Restangular.one('me').all('notifications').getList().then(function(notifications) {
+            Notification.getNotifications().then(function(notifications) {
                 service.notifications = notifications;
             });
         }

@@ -1,15 +1,17 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('Post', function(Restangular, $rootScope) {
+    .factory('Post', function(Restangular, $rootScope, $log) {
 
         var Post = Restangular.service('posts');
 
         Post.getFeed = function() {
+            $log.debug('getting feed');
             return Restangular.one('me').all('following').all('posts').getList();
         };
 
         Restangular.extendModel('posts', function(post) {
+            $log.debug('wrapping post');
             post.comments = post.comments || [];
             _.each(post.comments, function(comment) {
                 comment.user = comment.user || {};

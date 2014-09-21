@@ -1,3 +1,12 @@
+<a name="0.16.3"></a>
+### 0.16.3 (2014-09-21)
+
+
+#### Bug Fixes
+
+* **notifications:** allow html characters ((814aa2ee))
+
+
 <a name="0.16.2"></a>
 ### 0.16.2 (2014-09-21)
 

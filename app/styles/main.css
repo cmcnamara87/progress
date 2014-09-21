@@ -3,6 +3,7 @@
 .navbar {
   background-color: white;
   margin-bottom: 0;
+  border-bottom: 1px solid #eee;
 }
 
 .cg-busy-default-sign {

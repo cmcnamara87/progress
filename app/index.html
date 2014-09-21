@@ -94,7 +94,7 @@
                                 <a ng-click="notification.markAsRead()" ui-sref="post({postId: notification.postId})">
                                     <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
 
-                                   {{ notification.text }}
+                                   <span ng-bind-html="notification.text"></span>
                                 </a>
                             </li>
                         </ul>

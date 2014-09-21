@@ -16,6 +16,19 @@ angular.module('progressClientApp')
             getOnline().then(function() {
                 getOffline();
             });
+            getLeaderboard();
+        }
+
+        function getLeaderboard() {
+            Restangular.one('me').all('following').all('leaderboard').getList().then(function(leaderboard) {
+                vm.leaderboard = _.reject(leaderboard, function(user) {
+                    return user.seconds === 0;
+                });
+                // vm.leaderboard = _.groupBy(leaderboard, function(time) { 
+                    // return time.userId;
+                    // return Math.floor(num); 
+                // }); //leaderboard;
+            });
         }
 
         function getPosts() {

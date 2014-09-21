@@ -5,9 +5,6 @@
 </style>
 <div class="wrapper wrapper-dark">
     <div class="container">
-        <div class="col-sm-12">
-            <!-- <h2>Feed</h2> -->
-        </div>
     
         <div class="col-sm-8">
             <div class="panel panel-default" ng-show="activeProject">
@@ -32,6 +29,26 @@
             </div>
         </div>
         <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Leaderboard
+                    </h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-hide="leaderboard.length">
+                        <span class="text-muted">No one's online.</span>
+                    </li>
+                    <li class="list-group-item" ng-repeat="user in leaderboard | orderBy:'-seconds'">
+                        <div>
+                            <a ui-sref="user.projects({userId: user.id})">
+                                {{ user.name }}
+                            </a>
+                            - {{ user.time }}
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">

@@ -84,8 +84,8 @@
 <!-- http://cmcnamara87.github.io/progress/#/users/1/projects -->
 
                     <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle" href >
-                            <i class="fa" ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}"></i> 
+                        <a class="dropdown-toggle navbar-notification" href >
+                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.notifications.length}"></i>  <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
                             {{ notificationService.notifications.length }}
                             <span class="caret" ng-show="notificationService.notifications.length"></span>
                         </a>

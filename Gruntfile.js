@@ -65,7 +65,7 @@ module.exports = function(grunt) {
             },
             pages: {
                 options: {
-                    remote: 'https://github.com/cmcnamara87/progress.git',
+                    remote: 'git@github.com:cmcnamara87/progress.git',
                     branch: 'gh-pages',
                     tag: require('./package.json').version
                 }

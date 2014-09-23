@@ -1,3 +1,12 @@
+<a name="0.16.8"></a>
+### 0.16.8 (2014-09-24)
+
+
+#### Bug Fixes
+
+* **build:** change github url to non-https ((8a64c733))
+
+
 <a name="0.16.7"></a>
 ### 0.16.7 (2014-09-24)
 

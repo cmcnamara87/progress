@@ -9,6 +9,7 @@ angular.module('progressClientApp')
         ];
 
         $scope.register = function(user) {
+            $scope.isRegistering = true;
             Restangular.all('users').all('register').post(user).then(function(user) {
                 $rootScope.currentUser = user;
                 $state.go('me.feed');

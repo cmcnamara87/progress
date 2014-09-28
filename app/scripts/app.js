@@ -135,6 +135,11 @@ angular
                 url: '/getting-started',
                 templateUrl: 'views/getting-started.html'
             })
+            .state('intro', {
+                url: '/intro',
+                // controller: 'RegisterCtrl',
+                templateUrl: 'views/intro.html'
+            })
             .state('register', {
                 url: '/register',
                 controller: 'RegisterCtrl',

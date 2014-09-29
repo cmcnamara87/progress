@@ -1,3 +1,12 @@
+<a name="0.17.2"></a>
+### 0.17.2 (2014-09-29)
+
+
+#### Features
+
+* **nabber:** add mark as read for notifications ((c2e8cf2a))
+
+
 <a name="0.17.1"></a>
 ### 0.17.1 (2014-09-29)
 

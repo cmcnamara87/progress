@@ -49,12 +49,20 @@
         <a href="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" target="_blank" ng-repeat="file in post.collection.files" style="display: block; border: 1px solid #ddd; margin: 10px 0; background-color: #eee; text-align: center;">
             <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ file.name }}" alt="" class="img-responsive" style="display: inline-block;">
         </a>
-        <div style="margin-top: 10px;">
-            <button class="btn btn-default btn-xs" ng-click="post.toggleLike()" ng-class="{'btn-primary': post.isLiked}"><i class="fa fa-thumbs-o-up"></i> Like {{ post.likes.length }}</button>
-            <span ng-repeat="like in post.likes">{{ like.user.name }}&nbsp;</span>
+        <div>
+            <button class="btn btn-default btn-xs" ng-click="post.toggleLike()" ng-class="{'btn-primary': post.isLiked}">
+                <i class="fa fa-thumbs-o-up"></i> 
+                Like
+            </button>            
         </div>
     </div>
     <ul class="list-group">
+        <li class="list-group-item" ng-show="post.likes.length">
+            <span ng-repeat="like in post.likes">
+                <a ui-sref="user.projects({userId: like.user.id })">{{ like.user.name }}</a>
+            </span>
+            like this.
+        </li>
         <li class="list-group-item" ng-repeat="comment in post.comments">
             <div class="media" style="margin-top: 0;">
                 <div class="pull-left">
@@ -66,7 +74,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item" ng-show="post.type !== 'STARTED_WORKING'">
             <div class="media" style="margin-top: 0;">
                 <div class="pull-left">
                     <img style="width:30px; height:30px;" ng-src="{{ currentUser.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">

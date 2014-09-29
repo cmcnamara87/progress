@@ -95,9 +95,15 @@
                             <li ng-repeat="notification in notificationService.notifications">
                                 <a ng-click="notification.markAsRead()" ui-sref="post({postId: notification.postId})">
                                     <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
-
+                            
                                    <span ng-bind-html="notification.text"></span>
                                 </a>
+                                <div style="padding: 0px 20px;">
+                                    <button class="btn btn-xs btn-link" tooltip="Mark as Read" ng-click="notification.markAsRead(); $event.stopPropagation();">
+                                        <i ng-hide="notification.isread" class="fa fa-circle-o"  style="font-size: 10px;"></i>    
+                                   </button>    
+                                </div>
+                                
                             </li>
                         </ul>
                     </li>

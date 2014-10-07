@@ -1,29 +1,48 @@
 <style>
-    body {
-        background-color: #eee;
-    }
+body {
+    background-color: #eee;
+}
 </style>
 <div class="wrapper wrapper-dark">
     <div class="container">
-    
+
         <div class="col-sm-8">
-            <div class="panel panel-default" ng-show="activeProject">
-                <div class="panel-body">
-                    <form role="form">
+            <form role="form">
+                <div class="panel panel-default" ng-show="activeProject" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function" ng-show="dropSupported">
+                    <div class="panel-body">
+
+                        <!-- <input type="text" ng-model="myModelObj"> -->
+                        <!-- <input type="file" ng-file-select="onFileSelect($files)"> -->
+                        <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"> -->
+                        <!-- <div >drop files here</div> -->
+                        <!-- <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div> -->
+                        <!-- <button ng-click="upload.abort()">Cancel Upload</button> -->
+
                         <textarea msd-elastic="\n" placeholder="What's going on?" ng-model="newPostText" class="form-control"></textarea>
-                    </form>
-                </div>
-                <div class="panel-footer text-right">
-                    <div class="pull-left">
-                        <a ui-sref="user.diary({ userId: currentUser.id, projectId: activeProject.id  })" class="btn btn-link">
-                            <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div> {{ activeProject.name }}
-                        </a>
+                        
+                        <ul ng-show="files.length" class="list-unstyled" style="margin-top: 10px;">
+                            <li ng-repeat="file in files" class="text-muted">
+                                {{ file.name }}
+                            </li>
+                        </ul>
+                        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+
                     </div>
-                    <button type="button" class="btn btn-primary" ng-click="postUpdate(newPostText)">Post</button>
+                    <div class="panel-footer text-right">
+                        <div class="pull-left">
+                            <a ui-sref="user.diary({ userId: currentUser.id, projectId: activeProject.id  })" class="btn btn-link">
+                                <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div>{{ activeProject.name }}
+                            </a>
+                        </div>
+
+                        <button class="btn btn-link" ng-file-select="onFileSelect($files)" data-multiple="false">
+                            <i class="fa fa-image"></i>
+                        </button>
+                        <button class="btn btn-primary" ng-click="postUpdate(newPostText, files)" ng-disabled="newPostText.length==0">Post</button>
+                    </div>
                 </div>
-            </div>
-    
-            
+            </form>
+
             <div ng-repeat="post in posts | limitTo:40">
                 <post></post>
             </div>
@@ -72,7 +91,7 @@
                     </li>
                 </ul>
             </div>
-    
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -93,8 +112,8 @@
                     </li>
                 </ul>
             </div>
-    
-    
+
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -107,7 +126,7 @@
                     </a>
                 </div>
             </div>
-    
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -118,20 +137,20 @@
                     <li class="list-group-item">
                         <a class="btn btn-link" ng-href="https://github.com/cmcnamara87/progress/issues" target="_blank">
                             Website
-                        </a>    
+                        </a> 
                     </li>
                     <li class="list-group-item">
                         <a class="btn btn-link" ng-href="https://github.com/cmcnamara87/progress-mac/issues" target="_blank">
                             Mac App
-                        </a>    
+                        </a> 
                     </li>
                 </ul>
             </div>
-    
+
         </div>
-    
-    
-    
-    
+
+
+
+
     </div>
 </div>

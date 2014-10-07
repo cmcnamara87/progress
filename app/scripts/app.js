@@ -11,7 +11,8 @@ angular
         'http-auth-interceptor',
         'ui.bootstrap',
         'angular-loading-bar',
-        'monospaced.elastic'
+        'monospaced.elastic',
+        'angularFileUpload'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,

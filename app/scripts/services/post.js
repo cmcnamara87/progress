@@ -33,8 +33,13 @@ angular.module('progressClientApp')
                 }
             });
 
-            post.delete = function() {
+            post.delete = function(posts) {
                 Restangular.one('me').one('posts', post.id).remove();
+                if(posts) {
+                    // remove it from the list
+                    var index = posts.indexOf(post);
+                    posts.splice(index, 1);
+                }
             };
 
             post.addComment = function(comment) {

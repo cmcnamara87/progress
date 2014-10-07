@@ -67,7 +67,9 @@ angular.module('progressClientApp')
             var tempPost = {
                 text: text,
                 user: $rootScope.currentUser,
-                project: vm.activeProject
+                project: vm.activeProject,
+                type: 'TEXT',
+                created: new Date().getTime() * 1000
             };
             vm.posts.unshift(tempPost);
 

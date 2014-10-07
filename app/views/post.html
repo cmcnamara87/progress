@@ -59,7 +59,8 @@
     <ul class="list-group">
         <li class="list-group-item" ng-show="post.likes.length">
             <span ng-repeat="like in post.likes">
-                <a ui-sref="user.projects({userId: like.user.id })">{{ like.user.name }}</a>
+                <a ui-sref="user.projects({userId: like.user.id })">{{ like.user.name }}</a><span ng-hide="$last || post.likes.length < 2">, 
+                </span>
             </span>
             like this.
         </li>

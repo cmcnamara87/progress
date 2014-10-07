@@ -67,7 +67,7 @@ angular.module('progressClientApp')
         }
 
         function postUpdate(text, files) {
-            if(files.length) {
+            if(files && files.length) {
                 postImageUpdate(text, files);
                 // post it as a screenshot
                 return;
@@ -91,7 +91,7 @@ angular.module('progressClientApp')
         }
 
         function postImageUpdate(text, files) {
-            if(!files.length) {
+            if(!files || !files.length) {
                 $log.error('No files given');
             }
             

@@ -1,3 +1,16 @@
+<a name="0.17.8"></a>
+### 0.17.8 (2014-10-07)
+
+
+#### Bug Fixes
+
+* **feed:** clear status box after submitting ((f3a31f3b), closes (#27))
+* **post:**
+  * new post appears with most info ((f9753b97))
+  * deleting post removes it from the field ((12797a26), closes (#28))
+  * fix like formatting ((b50cd9b6), closes (#26))
+
+
 <a name="0.17.7"></a>
 ### 0.17.7 (2014-10-07)
 

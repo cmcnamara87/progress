@@ -10,7 +10,7 @@
             <div class="panel panel-default" ng-show="activeProject">
                 <div class="panel-body">
                     <form role="form">
-                        <textarea msd-elastic="\n" placeholder="What's going on?" ng-model="text" class="form-control"></textarea>
+                        <textarea msd-elastic="\n" placeholder="What's going on?" ng-model="newPostText" class="form-control"></textarea>
                     </form>
                 </div>
                 <div class="panel-footer text-right">
@@ -19,7 +19,7 @@
                             <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div> {{ activeProject.name }}
                         </a>
                     </div>
-                    <button type="button" class="btn btn-primary" ng-click="post(text)">Post</button>
+                    <button type="button" class="btn btn-primary" ng-click="postUpdate(newPostText)">Post</button>
                 </div>
             </div>
     

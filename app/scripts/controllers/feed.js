@@ -6,7 +6,8 @@ angular.module('progressClientApp')
         vm.posts = null;
         vm.online = null;
         vm.activeProject = null;
-        vm.post = post;
+        vm.postUpdate = postUpdate;
+        vm.newPostText = '';
         activate();
 
         /////////
@@ -61,11 +62,19 @@ angular.module('progressClientApp')
             });
         }
 
-        function post(text) {
+        function postUpdate(text) {
+            vm.newPostText = '';
+            var tempPost = {
+                text: text,
+                user: $rootScope.currentUser,
+                project: vm.activeProject
+            };
+            vm.posts.unshift(tempPost);
+
             Restangular.one('me').all('posts').post({
                 text: text
             }).then(function(post) {
-                vm.posts.unshift(post);
+                angular.copy(post, tempPost);
             });
         }
     });

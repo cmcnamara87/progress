@@ -31,7 +31,7 @@
     <![endif]-->
     <nav class="navbar" role="navigation" style="position: fixed; top: 0; width: 100%; z-index: 99;">
         <div class="container">
-            
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -72,8 +72,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-show="currentUser.id">
                         <a ui-sref="user.projects({userId: currentUser.id})">
-                            <img style="height: 18px; width: 18px;" ng-src="{{ currentUser.picture }}" alt="">
-                            {{ currentUser.name }}
+                            <img style="height: 18px; width: 18px;" ng-src="{{ currentUser.picture }}" alt="">{{ currentUser.name }}
                         </a>
                     </li>
 
@@ -83,11 +82,12 @@
                         </a>
                     </li>
 
-<!-- http://cmcnamara87.github.io/progress/#/users/1/projects -->
+                    <!-- http://cmcnamara87.github.io/progress/#/users/1/projects -->
 
                     <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle navbar-notification" href >
-                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.notifications.length}"></i>  <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
+                        <a class="dropdown-toggle navbar-notification" href>
+                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.notifications.length}"></i> 
+                            <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
                             {{ notificationService.notifications.length }}
                             <span class="caret" ng-show="notificationService.notifications.length"></span>
                         </a>
@@ -95,13 +95,13 @@
                             <li ng-repeat="notification in notificationService.notifications">
                                 <a ng-click="notification.markAsRead()" ui-sref="post({postId: notification.postId})">
                                     <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
-                            
-                                   <span ng-bind-html="notification.text"></span>
+
+                                    <span ng-bind-html="notification.text"></span>
                                 </a>
                                 <div style="padding: 0px 20px;">
                                     <button class="btn btn-xs btn-link" tooltip="Mark as Read" ng-click="notification.markAsRead(); $event.stopPropagation();">
-                                        <i ng-hide="notification.isread" class="fa fa-circle-o"  style="font-size: 10px;"></i>    
-                                   </button>    
+                                        <i ng-hide="notification.isread" class="fa fa-circle-o" style="font-size: 10px;"></i> 
+                                    </button>
                                 </div>
                             </li>
                             <li>
@@ -115,7 +115,7 @@
                     <li><a ui-sref="register" ng-if="!currentUser">Register</a>
                     </li>
                     <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle" href ><i class="fa fa-cog"></i> <span class="caret"></span></a>
+                        <a class="dropdown-toggle" href><i class="fa fa-cog"></i> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a ui-sref="user.projects({userId: currentUser.id})">My Projects</a>
@@ -143,14 +143,14 @@
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
+    ga('create', 'UA-51312192-2', 'auto');
+    // ga('send', 'pageview');
     </script>
 
     <!--[if lt IE 9]>
@@ -178,6 +178,24 @@
     <script src="bower_components/angular-elastic/elastic.js"></script>
     <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
     <script src="bower_components/ng-file-upload-shim/angular-file-upload-shim.js"></script>
+    <script src="bower_components/jquery-waypoints/waypoints.js"></script>
+    <script src="bower_components/SHA-1/sha1.js"></script>
+    <script src="bower_components/angulartics/src/angulartics.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-adobe.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-chartbeat.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-flurry.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-ga.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-gtm.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-kissmetrics.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-mixpanel.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-piwik.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-scroll.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-segmentio.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-splunk.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-woopra.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-marketo.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-intercom.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

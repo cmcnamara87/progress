@@ -12,7 +12,9 @@ angular
         'ui.bootstrap',
         'angular-loading-bar',
         'monospaced.elastic',
-        'angularFileUpload'
+        'angularFileUpload',
+        'angulartics', 
+        'angulartics.google.analytics'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,
@@ -30,10 +32,11 @@ angular
                 templateUrl: 'views/login-modal.html',
                 controller: ['$scope', '$modalInstance',
                     function($scope, $modalInstance) {
-                        console.log('got to here!');
                         $scope.login = function(user) {
                             Restangular.all('users').login(user).then(function(currentUser) {
                                 notificationService.loadNotifications();
+                                // ga('set', { userId: currentUser.id });
+                                ga('set', 'userId', currentUser.id + '');
                                 // $rootscope.currentUser = user;
                                 // User.login(user).then(function() {
                                 $modalInstance.close(currentUser);

@@ -34,7 +34,7 @@ angular.module('progressClientApp')
             });
 
             post.delete = function(posts) {
-                $analytics.eventTrack('post-delete');
+                $analytics.eventTrack('post-delete', {category: 'post'});
                 Restangular.one('me').one('posts', post.id).remove();
                 if(posts) {
                     // remove it from the list
@@ -44,7 +44,7 @@ angular.module('progressClientApp')
             };
 
             post.addComment = function(comment) {
-                $analytics.eventTrack('comment-add');
+                $analytics.eventTrack('comment-add', {category: 'comment'});
                 Restangular.one('me').one('posts', post.id).all('comments').post(comment).then(function(savedComment) {
                     _.extend(comment, savedComment);
                 });
@@ -60,7 +60,7 @@ angular.module('progressClientApp')
             };
             
             post.toggleLike = function() {
-                $analytics.eventTrack('post-like');
+                $analytics.eventTrack('post-like', {category: 'post'});
                 var likeTemp = {};
                 if($rootScope.currentUser) {
                     likeTemp.userId = $rootScope.currentUser.id;

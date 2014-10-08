@@ -10,7 +10,7 @@ angular.module('progressClientApp')
                 notification.isread = 1;
                 notification.save();
                 $log.debug('Marking as read', notification);
-                $analytics.eventTrack('notification-mark-as-read');
+                $analytics.eventTrack('notification-mark-as-read', {category: 'notification'});
                 $rootScope.notificationService.notifications = _.without($rootScope.notificationService.notifications, 
                     notification);
             };

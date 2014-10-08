@@ -34,7 +34,7 @@ angular
                 controller: ['$scope', '$modalInstance',
                     function($scope, $modalInstance) {
                         $scope.login = function(user) {
-                            $analytics.eventTrack('user-login');
+                            $analytics.eventTrack('user-login', {category: 'user'});
                             Restangular.all('users').login(user).then(function(currentUser) {
                                 notificationService.loadNotifications();
                                 // ga('set', { userId: currentUser.id });

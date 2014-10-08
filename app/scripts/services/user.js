@@ -19,7 +19,7 @@ angular.module('progressClientApp')
         };
 
         User.logout = function() {
-            $analytics.eventTrack('user-logout');
+            $analytics.eventTrack('user-logout', {category: 'user'});
             Restangular.all('users').all('logout').post();
             $rootScope.currentUser = null;
         };

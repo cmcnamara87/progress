@@ -62,8 +62,10 @@ angular
             }
         });
         
-    }).config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
+    }).config(function($stateProvider, $urlRouterProvider, RestangularProvider, $analyticsProvider) {
         console.log('host name', document.location.hostname);
+
+        $analyticsProvider.virtualPageviews(true);
 
         if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
             RestangularProvider.setBaseUrl('api/index.php');

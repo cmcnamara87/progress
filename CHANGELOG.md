@@ -1,3 +1,12 @@
+<a name="0.20.0"></a>
+## 0.20.0 (2014-10-08)
+
+
+#### Features
+
+* **analytics:** add event tracking to posts ((dc4c9c31))
+
+
 <a name="0.19.3"></a>
 ### 0.19.3 (2014-10-08)
 

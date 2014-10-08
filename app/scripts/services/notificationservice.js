@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('notificationService', function(Restangular, Notification) {
+    .factory('notificationService', function(Restangular, Notification, $analytics) {
         var service = {
             notifications: [],
             loadNotifications: loadNotifications,
@@ -16,6 +16,7 @@ angular.module('progressClientApp')
         }
 
         function markAllAsRead() {
+            $analytics.eventTrack('notification-mark-all-as-read');
             _.each(service.notifications, function(notification) {
                 notification.markAsRead();
             });

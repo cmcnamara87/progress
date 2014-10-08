@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('User', function(Restangular, $rootScope) {
+    .factory('User', function(Restangular, $rootScope, $analytics) {
 
         var User = Restangular.service('users');
 
@@ -19,6 +19,7 @@ angular.module('progressClientApp')
         };
 
         User.logout = function() {
+            $analytics.eventTrack('user-logout');
             Restangular.all('users').all('logout').post();
             $rootScope.currentUser = null;
         };

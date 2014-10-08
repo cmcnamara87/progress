@@ -22,7 +22,8 @@ angular
         // delay: 300,
         // minDuration: 700
     }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.19/Progress.zip')
-    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams, notificationService) { 
+    .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams, 
+        notificationService, $analytics) { 
         $rootScope.User = User;
         $rootScope.downloadUrl = downloadUrl;
         $rootScope.notificationService = notificationService;
@@ -33,6 +34,7 @@ angular
                 controller: ['$scope', '$modalInstance',
                     function($scope, $modalInstance) {
                         $scope.login = function(user) {
+                            $analytics.eventTrack('user-login');
                             Restangular.all('users').login(user).then(function(currentUser) {
                                 notificationService.loadNotifications();
                                 // ga('set', { userId: currentUser.id });

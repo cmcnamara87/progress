@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('Notification', function(Restangular, $rootScope, $log) {
+    .factory('Notification', function(Restangular, $rootScope, $log, $analytics) {
         var Notification = Restangular.service('notifications');
         Notification.getNotifications = getNotifications;
         
@@ -10,6 +10,7 @@ angular.module('progressClientApp')
                 notification.isread = 1;
                 notification.save();
                 $log.debug('Marking as read', notification);
+                $analytics.eventTrack('notification-mark-as-read');
                 $rootScope.notificationService.notifications = _.without($rootScope.notificationService.notifications, 
                     notification);
             };

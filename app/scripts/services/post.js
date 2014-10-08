@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .factory('Post', function(Restangular, $rootScope, $log) {
+    .factory('Post', function(Restangular, $rootScope, $log, $analytics) {
 
         var Post = Restangular.service('posts');
 
@@ -34,6 +34,7 @@ angular.module('progressClientApp')
             });
 
             post.delete = function(posts) {
+                $analytics.eventTrack('post-delete');
                 Restangular.one('me').one('posts', post.id).remove();
                 if(posts) {
                     // remove it from the list
@@ -43,6 +44,7 @@ angular.module('progressClientApp')
             };
 
             post.addComment = function(comment) {
+                $analytics.eventTrack('comment-add');
                 Restangular.one('me').one('posts', post.id).all('comments').post(comment).then(function(savedComment) {
                     _.extend(comment, savedComment);
                 });
@@ -58,6 +60,7 @@ angular.module('progressClientApp')
             };
             
             post.toggleLike = function() {
+                $analytics.eventTrack('post-like');
                 var likeTemp = {};
                 if($rootScope.currentUser) {
                     likeTemp.userId = $rootScope.currentUser.id;

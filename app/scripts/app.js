@@ -14,7 +14,8 @@ angular
         'monospaced.elastic',
         'angularFileUpload',
         'angulartics', 
-        'angulartics.google.analytics'
+        'angulartics.google.analytics',
+        'bernhardposselt.enhancetext'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,
@@ -64,9 +65,14 @@ angular
             }
         });
         
-    }).config(function($stateProvider, $urlRouterProvider, RestangularProvider, $analyticsProvider) {
+    }).config(function($stateProvider, $urlRouterProvider, enhanceTextFilterProvider, 
+        RestangularProvider, $analyticsProvider) {
         console.log('host name', document.location.hostname);
 
+        enhanceTextFilterProvider.setOptions({
+            embeddedYoutubeWidth: '100%',
+            embeddedYoutubeHeight: '275px',
+        });
         $analyticsProvider.virtualPageviews(true);
 
         if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {

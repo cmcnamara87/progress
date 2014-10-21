@@ -92,9 +92,7 @@
             <div ng-repeat="entry in date.entries">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
-                        <p>
-                            {{ entry.text }}
-                        </p>
+                        <p ng-bind-html="entry.text | enhanceText"></p>
                     </div>
                 </div>
                 <div style="text-align: center;" class="images" ng-show="entry.collection.files.length">

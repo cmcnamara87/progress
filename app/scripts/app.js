@@ -70,8 +70,8 @@ angular
         console.log('host name', document.location.hostname);
 
         enhanceTextFilterProvider.setOptions({
-            embeddedYoutubeWidth: '100%',
-            embeddedYoutubeHeight: '275px',
+            embeddedYoutubeWidth: 'auto',
+            embeddedYoutubeHeight: 'auto',
         });
         $analyticsProvider.virtualPageviews(true);
 

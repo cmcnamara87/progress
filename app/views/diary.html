@@ -95,8 +95,13 @@
                         <p ng-bind-html="entry.text | enhanceText"></p>
                     </div>
                 </div>
-                <div style="text-align: center;" class="images" ng-show="entry.collection.files.length">
-                    <img ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ entry.collection.files[0].name }}" alt="" style="max-width: 100%;">
+                <div style="text-align: center;" class="images" ng-show="entry.media.length">
+                    <div class="row">
+                        <div class="col-sm-{{ 12 / entry.media.length }}" ng-repeat="media in entry.media">
+                            <img ng-src="{{ media.url }}" alt="" style="max-width: 100%;">        
+                        </div>
+                    </div>
+                    
                 </div>
 
 

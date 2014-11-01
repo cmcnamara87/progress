@@ -149,15 +149,17 @@ module.exports = function(grunt) {
             },
             proxies: [{
                 context: '/api',
-                host: 'ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com',
+                host: 'localhost',
+                port: '8888',
+                // host: 'ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com',
                 // host: 'localhost',
                 // port: 8888,
                 // headers: {
                 //     host: 'localhost:8000'
                 // },
                 rewrite: {
-                    '^/api': '/progress/api'
-                    // '^/api': ''
+                    // '^/api': '/progress/api'
+                    '^/api': '/public'
                 }
             }],
             livereload: {

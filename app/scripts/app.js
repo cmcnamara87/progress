@@ -76,7 +76,7 @@ angular
         $analyticsProvider.virtualPageviews(true);
 
         if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
-            RestangularProvider.setBaseUrl('api/index.php');
+            RestangularProvider.setBaseUrl('api');
         } else {
             RestangularProvider
             .setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');

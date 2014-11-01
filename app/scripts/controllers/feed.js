@@ -68,6 +68,7 @@ angular.module('progressClientApp')
 
         function postUpdate(text, files) {
             if(files && files.length) {
+                $log.debug('image update!');
                 postImageUpdate(text, files);
                 // post it as a screenshot
                 return;
@@ -99,7 +100,7 @@ angular.module('progressClientApp')
 
             var baseUrl = '';
             if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
-                baseUrl = 'api/index.php';
+                baseUrl = 'api';
             } else {
                 baseUrl = 'http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php';
             }

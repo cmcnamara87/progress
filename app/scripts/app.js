@@ -22,7 +22,7 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.19/Progress.zip')
+    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.20/Progress.zip')
     .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams, 
         notificationService, $analytics) { 
         $rootScope.User = User;
@@ -77,6 +77,9 @@ angular
 
         if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
             RestangularProvider.setBaseUrl('api');
+        } else if (document.location.hostname === 'getprogress.com' || 
+            document.location.hostname === 'www.getprogress.com') {
+            RestangularProvider.setBaseUrl('api/index.php');
         } else {
             RestangularProvider
             .setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');

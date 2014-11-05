@@ -521,20 +521,21 @@ module.exports = function(grunt) {
         // 'rsync'
     ]);
 
-    grunt.registerTask('deploy:patch', [
+    grunt.registerTask('deploy', [
         'build',
         'bump-only:patch',
         'changelog',
         'bump-commit',
-        'buildcontrol:pages'
+        'rsync:prod'
+        // 'buildcontrol:pages'
     ]);
-    grunt.registerTask('deploy:minor', [
-        'build',
-        'bump-only:minor',
-        'changelog',
-        'bump-commit',
-        'buildcontrol:pages'
-    ]);
+    // grunt.registerTask('deploy:minor', [
+    //     'build',
+    //     'bump-only:minor',
+    //     'changelog',
+    //     'bump-commit',
+    //     'buildcontrol:pages'
+    // ]);
 
     grunt.registerTask('default', [
         'newer:jshint',

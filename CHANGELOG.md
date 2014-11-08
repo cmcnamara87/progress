@@ -1,3 +1,12 @@
+<a name="0.21.16"></a>
+### 0.21.16 (2014-11-08)
+
+
+#### Bug Fixes
+
+* **post:** fix like not setting the button ((afae3405))
+
+
 <a name="0.21.15"></a>
 ### 0.21.15 (2014-11-08)
 

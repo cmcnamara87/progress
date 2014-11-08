@@ -22,7 +22,7 @@ angular.module('progressClientApp')
             var stopListening = $rootScope.$watch('currentUser', function(currentUser) {
                 // var newlyLoggedIn = currentUser && !old;
                 if(currentUser) {
-                    var like = _.findWhere(post.likes, {'userId': $rootScope.currentUser.id});
+                    var like = _.findWhere(post.likes, {'user_id': $rootScope.currentUser.id});
                     if(like) {
                         post.isLiked = true;
                     }

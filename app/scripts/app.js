@@ -79,7 +79,7 @@ angular
             // RestangularProvider.setBaseUrl('api');
         // } else if (document.location.hostname === 'getprogress.com' || 
             // document.location.hostname === 'www.getprogress.com') {
-            RestangularProvider.setBaseUrl('api/index.php');
+        RestangularProvider.setBaseUrl('api/index.php');
         // } else {
             // RestangularProvider
             // .setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');

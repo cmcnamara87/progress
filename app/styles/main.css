@@ -13,6 +13,7 @@
   box-shadow: none;
 }
 
+
 body {
   /*font-size: 16px;*/
   /*background-color: #eee;*/
@@ -48,6 +49,9 @@ body {
 }
 .navbar-notification-icon.active:before {
  content: "\f0f3";
+}
+.notification-unread {
+  background-color: #DFF0FF;
 }
 
 

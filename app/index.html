@@ -96,25 +96,25 @@
 
                     <li class="dropdown" ng-show="currentUser.id">
                         <a class="dropdown-toggle navbar-notification" href>
-                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.notifications.length}"></i> 
+                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.hasUnread }"></i> 
                             <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
-                            {{ notificationService.notifications.length }}
-                            <span class="caret" ng-show="notificationService.notifications.length"></span>
+                            {{ notificationService.unreadCount }}
+                            <span class="caret" ng-show="notificationService.hasUnread"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu" ng-show="notificationService.notifications.length">
-                            <li ng-repeat="notification in notificationService.notifications">
-                                <a ng-click="notification.markAsRead()" ui-sref="post({postId: notification.postId})">
+                        <ul class="dropdown-menu" role="menu" ng-show="notificationService.notifications.length" style="width:350px;">
+                            <li ng-repeat="notification in notificationService.notifications" style="border-bottom:1px solid #ddd">
+                                <a ng-click="notificationService.markAsRead(notification)" ui-sref="post({postId: notification.post_id})" ng-class="{'notification-unread': !notification.isread}">
                                     <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
 
-                                    <span ng-bind-html="notification.text"></span>
+                                    <span ng-bind-html="notification.text" style="white-space:normal;"></span>
                                 </a>
-                                <div style="padding: 0px 20px;">
+                                <!-- <div style="padding: 0px 20px;">
                                     <button class="btn btn-xs btn-link" tooltip="Mark as Read" ng-click="notification.markAsRead(); $event.stopPropagation();">
                                         <i ng-hide="notification.isread" class="fa fa-circle-o" style="font-size: 10px;"></i> 
                                     </button>
-                                </div>
+                                </div> -->
                             </li>
-                            <li>
+                            <li ng-show="notificationService.hasUnread">
                                 <a class="btn btn-link btn-xs" href ng-click="notificationService.markAllAsRead()">Mark All as Read</a>
                             </li>
                         </ul>

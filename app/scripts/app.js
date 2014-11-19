@@ -15,7 +15,8 @@ angular
         'angularFileUpload',
         'angulartics', 
         'angulartics.google.analytics',
-        'bernhardposselt.enhancetext'
+        'bernhardposselt.enhancetext',
+        'config'
     ]).value('cgBusyDefaults', {
         message: 'Loading',
         // backdrop: false,
@@ -66,7 +67,7 @@ angular
         });
         
     }).config(function($stateProvider, $urlRouterProvider, enhanceTextFilterProvider, 
-        RestangularProvider, $analyticsProvider) {
+        RestangularProvider, $analyticsProvider, ENV) {
         console.log('host name', document.location.hostname);
 
         enhanceTextFilterProvider.setOptions({
@@ -79,7 +80,7 @@ angular
             // RestangularProvider.setBaseUrl('api');
         // } else if (document.location.hostname === 'getprogress.com' || 
             // document.location.hostname === 'www.getprogress.com') {
-        RestangularProvider.setBaseUrl('api/index.php');
+        RestangularProvider.setBaseUrl(ENV.apiEndpoint);
         // } else {
             // RestangularProvider
             // .setBaseUrl('http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php');

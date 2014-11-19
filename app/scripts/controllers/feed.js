@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('progressClientApp')
-    .controller('FeedCtrl', function($scope, Restangular, Post, User, $rootScope, $log, $upload) {
+    .controller('FeedCtrl', function($scope, Restangular, Post, User, $rootScope, $log, $upload, ENV) {
         var vm = $scope;
         vm.posts = null;
         vm.online = null;
@@ -99,14 +99,14 @@ angular.module('progressClientApp')
             var file = vm.files[0];
 
             var baseUrl = '';
-            if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
-                baseUrl = 'api';
-            } else {
-                baseUrl = 'http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php';
-            }
+            // if (document.location.hostname === '127.0.0.1' || document.location.hostname === 'localhost') {
+            //     baseUrl = 'api';
+            // } else {
+            //     baseUrl = 'http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/api/index.php';
+            // }
 
             $scope.upload = $upload.upload({
-                url: baseUrl + '/me/projects/' + vm.activeProject.id + '/screenshots', 
+                url: ENV.apiEndpoint + '/me/projects/' + vm.activeProject.id + '/screenshots', 
                 //method: 'POST' or 'PUT',
                 //headers: {'header-key': 'header-value'},
                 withCredentials: true,

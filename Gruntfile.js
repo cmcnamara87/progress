@@ -34,6 +34,38 @@ module.exports = function(grunt) {
             src: ['**']
         },
 
+        ngconstant: {
+            // Options for all targets
+            options: {
+                space: '  ',
+                wrap: '// jshint ignore: start\n\n "use strict";\n\n {%= __ngModule %}',
+                name: 'config',
+            },
+            // Environment targets
+            development: {
+                options: {
+                    dest: '<%= yeoman.app %>/scripts/config.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'development',
+                        apiEndpoint: 'api/index.php'
+                    }
+                }
+            },
+            production: {
+                options: {
+                    dest: '<%= yeoman.dist %>/scripts/config.js'
+                },
+                constants: {
+                    ENV: {
+                        name: 'production',
+                        apiEndpoint: 'api/index.php'
+                    }
+                }
+            }
+        },
+
         bump: {
             options: {
                 // files: ['package.json'],
@@ -86,14 +118,14 @@ module.exports = function(grunt) {
 
         rsync: {
             options: {
-                args: ['--verbose'],
+                args: ['--verbose', '--rsync-path=~/bin/rsync'],
                 exclude: ['.git*', '*.scss', 'node_modules'],
                 recursive: true
             },
             prod: {
                 options: {
                     src: '<%= yeoman.dist %>/',
-                    dest: 'ec2-user@amazon:/var/www/html/progress',
+                    dest: 'cmcnamara87@godaddy:/home/cmcnamara87/www/getprogress.com',
                     ssh: true,
                     rescursive: true,
                     // syncDestIgnoreExcl: true,
@@ -147,21 +179,29 @@ module.exports = function(grunt) {
                 hostname: 'localhost',
                 livereload: 35729
             },
-            proxies: [{
-                context: '/api',
-                // host: 'localhost',
-                // port: '8888',
-                host: 'getprogress.com',
-                // host: 'localhost',
-                // port: 8888,
-                headers: {
-                    host: 'getprogress.com:80'
-                },
-                rewrite: {
-                    // '^/api': '/progress/api'
-                    // '^/api': '/public'
-                }
-            }],
+            development: {
+                proxies: [{
+                    context: '/api',
+                    host: 'localhost',
+                    port: '8888',
+                    headers: {
+                        host: 'losthost:8888'
+                    },
+                    rewrite: {
+                        '^/api': '/public'
+                    }
+                }]
+            },
+            production: {
+                appendProxies: false,
+                proxies: [{
+                    context: '/api',
+                    host: 'getprogress.com',
+                    headers: {
+                        host: 'getprogress.com:80'
+                    }
+                }]
+            },
             livereload: {
                 options: {
                     open: true,
@@ -480,8 +520,9 @@ module.exports = function(grunt) {
 
         grunt.task.run([
             'clean:server',
+            'ngconstant:development', // ADD THIS
             'bowerInstall',
-            'configureProxies:server',
+            'configureProxies:production',
             'concurrent:server',
             'autoprefixer',
             'connect:livereload',
@@ -504,6 +545,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'ngconstant:production', // ADD THIS
         'bowerInstall',
         'configureProxies:server',
         'useminPrepare',

@@ -38,6 +38,8 @@
                 <h1>
                     {{ user.name }}
                 </h1>
+                <button class="btn btn-default" ng-show="user.isFollowing">Following</button>
+                <button class="btn btn-primary" ng-hide="user.isFollowing">Follow</button>
             </div>
         </div>
     

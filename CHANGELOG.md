@@ -1,3 +1,17 @@
+<a name="0.21.20"></a>
+### 0.21.20 (2014-11-19)
+
+
+#### Bug Fixes
+
+* **navbar:** hamburger not showing up ((9588cd63))
+
+
+#### Features
+
+* **user:** add following button ((3603f7da))
+
+
 <a name="0.21.19"></a>
 ### 0.21.19 (2014-11-19)
 

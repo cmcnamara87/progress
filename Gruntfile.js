@@ -341,7 +341,7 @@ module.exports = function(grunt) {
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
             css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
             options: {
-                assetsDirs: ['<%= yeoman.dist %>'],
+                assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images'],
                 patterns: {
                     css: [
                         [/(\/bower_components\/bootstrap\/dist\/fonts)/g, 'god help me',

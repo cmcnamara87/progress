@@ -18,7 +18,7 @@
     color: white;
     text-align: center;
     /*background-image: url('../images/photo-1416339684178-3a239570f315.jpeg');*/
-    padding: 200px 0;
+    padding: 150px 0;
 
     background: 
     /* top, transparent red, faked with gradient */ 
@@ -34,7 +34,16 @@
 
     /*rgba(66, 139, 202, 0.8), 
       rgba(66, 139, 202, 0.8)*/
-
+}
+.jumbotron-landing h1 {
+  font-size: 45px;  
+    margin-bottom: 40px;
+    line-height: 60px;
+    padding: 0 80px;
+}
+.jumbotron-landing .btn {
+    font-size: 20px;
+    padding: 15px 35px;
 }
 .btn-hollow {
   border-color: white;

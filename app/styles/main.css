@@ -13,6 +13,37 @@
   box-shadow: none;
 }
 
+.jumbotron-landing {
+    background-color: #428bca;
+    color: white;
+    text-align: center;
+    /*background-image: url('../images/photo-1416339684178-3a239570f315.jpeg');*/
+    padding: 200px 0;
+
+    background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(66, 139, 202, 0.8), 
+      rgba(66, 139, 202, 0.8)
+    ),
+    /* bottom, image */
+    url('../images/photo-1416339684178-3a239570f315.jpeg');
+    background-size: cover;
+
+    /*rgb(66, 139, 202)*/
+
+    /*rgba(66, 139, 202, 0.8), 
+      rgba(66, 139, 202, 0.8)*/
+
+}
+.btn-hollow {
+  border-color: white;
+  color: white;
+}
+.btn-hollow:hover {
+  color: white;
+}
+
 
 body {
   /*font-size: 16px;*/

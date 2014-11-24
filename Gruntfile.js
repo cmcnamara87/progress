@@ -344,6 +344,8 @@ module.exports = function(grunt) {
                 assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images'],
                 patterns: {
                     css: [
+                        [/(images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 
+                        'Update the CSS to reference our revved images'],
                         [/(\/bower_components\/bootstrap\/dist\/fonts)/g, 'god help me',
                             function(match) {
                                 return match.replace('/bower_components/bootstrap/dist/fonts', '../fonts');

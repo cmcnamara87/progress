@@ -23,7 +23,7 @@ angular
         // templateUrl: 'my_custom_template.html',
         // delay: 300,
         // minDuration: 700
-    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.20/Progress.zip')
+    }).value('downloadUrl', 'https://github.com/cmcnamara87/progress-mac/releases/download/v0.21/Progress.zip')
     .run(function($rootScope, $modal, User, authService, Restangular, downloadUrl, $stateParams, 
         notificationService, $analytics) { 
         $rootScope.User = User;

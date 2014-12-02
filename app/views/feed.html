@@ -1,7 +1,15 @@
+
 <div class="row">
     <div class="col-sm-9" style="padding-top: 20px;">
         <div class="row">
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6 visible-lg">
+                <div ng-repeat="post in posts">
+                    <div ng-if="$index % 2">
+                        <post></post>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-sm-8 col-sm-offset-2">
                 <form role="form">
                     <!-- <pre>
                         {{ dropSupported | json }}
@@ -42,19 +50,19 @@
                 </form>
 
                 <div ng-repeat="post in posts">
-                    <div ng-if="$index % 2 == 0">
+                    <!-- <div ng-if="$index % 2 == 0"> -->
                         <post></post>
-                    </div>
+                    <!-- </div> -->
                 </div>
 
             </div>
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
                 <div ng-repeat="post in posts">
                     <div ng-if="$index % 2">
                         <post></post>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="col-sm-3" style="background-color:#E3E6E8;padding-top:20px;">

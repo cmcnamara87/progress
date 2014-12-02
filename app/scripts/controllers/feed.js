@@ -14,6 +14,9 @@ angular.module('progressClientApp')
 
         /////////
 
+        Restangular.one('me').all('projects').getList().then(function(projects) {
+            vm.projects = projects;
+        });
         function activate() {
             getPosts();
             getOnline().then(function() {

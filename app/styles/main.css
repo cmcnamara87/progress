@@ -4,6 +4,7 @@
   background-color: white;
   margin-bottom: 0;
   border-bottom: 1px solid #eee;
+  border-radius: 0;
 }
 
 .cg-busy-default-sign {
@@ -30,7 +31,7 @@ section {
       rgba(66, 139, 202, 0.9)
     ),
     /* bottom, image */
-    url('../images/photo-1416339684178-3a239570f315.jpeg');
+    url('../images/photo-1416339442236-8ceb164046f8.jpeg');
 
     background: /* top, transparent red, faked with gradient */ 
     linear-gradient(
@@ -38,8 +39,9 @@ section {
       rgba(0, 0, 0, 0.6)
     ),
     /* bottom, image */
-    url('https://unsplash.imgix.net/45/QDSMoAMTYaZoXpcwBjsL__DSC0104-1.jpg?q=75&fm=jpg&s=a23211f4c321462b631e8bc8978ca4af');
+    url('../images/photo-1416339442236-8ceb164046f8.jpeg');
   background-position: 60% 60%;
+
 
   /*background-image: url('../images/photo-1416339684178-3a239570f315.jpeg');*/
   background-size: cover;

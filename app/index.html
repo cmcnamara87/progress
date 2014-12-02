@@ -29,23 +29,25 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <nav class="navbar" role="navigation" style="position: fixed; top: 0; width: 100%; z-index: 99;">
-        <div class="container">
+    <nav class="navbar" role="navigation" style="border:none;height:50px;position: fixed; top: 0; width: 100%; z-index: 99;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2" style="background:#428bca">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
 
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-bars"></i>
-                </button>
+                        <a class="navbar-brand" style="color:white;" ui-sref="me.feed" ng-show="currentUser" ng-cloak><i class="fa fa-book"></i> Progress</a>
+                        <a class="navbar-brand" style="color:white;" ui-sref="landing" ng-hide="currentUser" ng-cloak><i class="fa fa-book"></i> Progress</a>
+                    </div>
+                </div>
 
-                <a class="navbar-brand" ui-sref="me.feed" ng-show="currentUser" ng-cloak><i class="fa fa-book"></i> Progress</a>
-                <a class="navbar-brand" ui-sref="landing" ng-hide="currentUser" ng-cloak><i class="fa fa-book"></i> Progress</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!--<ul class="nav navbar-nav">
+                <div class="col-sm-10">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <!--<ul class="nav navbar-nav">
             <li class="active"><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
@@ -61,85 +63,90 @@
               </ul>
             </li>
           </ul>-->
-                <!-- <form class="navbar-form navbar-left" role="search"> -->
-                <!-- <div class="form-group">
+                        <!-- <form class="navbar-form navbar-left" role="search"> -->
+                        <!-- <div class="form-group">
                 <label for="">
                     Already have an account?
                 </label>
             </div> -->
-                <!-- <button class="btn btn-default">Sign in</button> -->
-                <!-- <div class="form-group">
+                        <!-- <button class="btn btn-default">Sign in</button> -->
+                        <!-- <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button> -->
-                <!-- </form> -->
-                <p ng-hide="currentUser.id" class="navbar-text navbar-right text-muted">Already have an account?
-                    <a ui-sref="me.feed" class="navbar-link">Sign in</a>
-                </p>
+                        <!-- </form> -->
+                        <p ng-hide="currentUser.id" class="navbar-text navbar-right text-muted">Already have an account?
+                            <a ui-sref="me.feed" class="navbar-link">Sign in</a>
+                        </p>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-show="currentUser.id">
-                        <a ui-sref="user.projects({userId: currentUser.id})">
-                            <img style="height: 18px; width: 18px;" ng-src="{{ currentUser.picture }}" alt="">
-                            &nbsp;
-                            {{ currentUser.name }}
-                        </a>
-                    </li>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li ng-show="currentUser.id">
+                                <a ui-sref="user.projects({userId: currentUser.id})">
+                                    <img style="height: 18px; width: 18px;" ng-src="{{ currentUser.picture }}" alt=""> &nbsp; {{ currentUser.name }}
+                                </a>
+                            </li>
 
-                    <li ng-show="currentUser.id">
-                        <a ui-sref="me.feed">
+                            <li ng-show="currentUser.id">
+                                <a ui-sref="me.feed">
                             Home
                         </a>
-                    </li>
+                            </li>
 
-                    <!-- http://cmcnamara87.github.io/progress/#/users/1/projects -->
+                            <!-- http://cmcnamara87.github.io/progress/#/users/1/projects -->
 
-                    <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle navbar-notification" href>
-                            <i class="navbar-notification-icon" ng-class="{'active': notificationService.hasUnread }"></i> 
-                            <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
-                            {{ notificationService.unreadCount }}
-                            <span class="caret" ng-show="notificationService.hasUnread"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu" ng-show="notificationService.notifications.length" style="width:350px;">
-                            <li ng-repeat="notification in notificationService.notifications" style="border-bottom:1px solid #ddd">
-                                <a ng-click="notificationService.markAsRead(notification)" ui-sref="post({postId: notification.post_id})" ng-class="{'notification-unread': !notification.isread}">
-                                    <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
-
-                                    <span ng-bind-html="notification.text" style="white-space:normal;"></span>
+                            <li class="dropdown" ng-show="currentUser.id">
+                                <a class="dropdown-toggle navbar-notification" href>
+                                    <i class="navbar-notification-icon" ng-class="{'active': notificationService.hasUnread }"></i>
+                                    <!-- ng-class="{'fa-bell-o': !notificationService.notifications.length,'fa-bell': notificationService.notifications.length}" -->
+                                    {{ notificationService.unreadCount }}
+                                    <span class="caret" ng-show="notificationService.hasUnread"></span>
                                 </a>
-                                <!-- <div style="padding: 0px 20px;">
+                                <ul class="dropdown-menu" role="menu" ng-show="notificationService.notifications.length" style="width:350px;">
+                                    <li ng-repeat="notification in notificationService.notifications" style="border-bottom:1px solid #ddd">
+                                        <a ng-click="notificationService.markAsRead(notification)" ui-sref="post({postId: notification.post_id})" ng-class="{'notification-unread': !notification.isread}">
+                                            <img style="width: 40px; height: 40px;" ng-repeat="image in notification.images" ng-src="http://ec2-54-206-66-123.ap-southeast-2.compute.amazonaws.com/progress/uploads/{{ image.name }}" alt="">
+
+                                            <span ng-bind-html="notification.text" style="white-space:normal;"></span>
+                                        </a>
+                                        <!-- <div style="padding: 0px 20px;">
                                     <button class="btn btn-xs btn-link" tooltip="Mark as Read" ng-click="notification.markAsRead(); $event.stopPropagation();">
                                         <i ng-hide="notification.isread" class="fa fa-circle-o" style="font-size: 10px;"></i> 
                                     </button>
                                 </div> -->
+                                    </li>
+                                    <li ng-show="notificationService.hasUnread">
+                                        <a class="btn btn-link btn-xs" href ng-click="notificationService.markAllAsRead()">Mark All as Read</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li ng-show="notificationService.hasUnread">
-                                <a class="btn btn-link btn-xs" href ng-click="notificationService.markAllAsRead()">Mark All as Read</a>
-                            </li>
-                        </ul>
-                    </li>
 
-                    <!-- <li ng-if="!currentUser.id">
+                            <!-- <li ng-if="!currentUser.id">
                         <a ui-sref="me.feed">
                         Already have an account?
                         Sign in</a>
                     </li> -->
-                    <!-- <li><a ui-sref="register" ng-if="!currentUser">Register</a>
+                            <!-- <li><a ui-sref="register" ng-if="!currentUser">Register</a>
                     </li> -->
-                    <li class="dropdown" ng-show="currentUser.id">
-                        <a class="dropdown-toggle" href><i class="fa fa-cog"></i> <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a ui-sref="user.projects({userId: currentUser.id})">My Projects</a>
-                            </li>
-                            <li><a ng-click="User.logout()" ui-sref="landing">Logout</a>
+                            <li class="dropdown" ng-show="currentUser.id">
+                                <a class="dropdown-toggle" href><i class="fa fa-cog"></i> <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a ui-sref="user.projects({userId: currentUser.id})">My Projects</a>
+                                    </li>
+                                    <li><a ng-click="User.logout()" ui-sref="landing">Logout</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </li>
-                </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+
+
         </div>
         <!-- /.container-fluid -->
     </nav>

@@ -80,7 +80,7 @@
                 <div class="pull-left">
                     <img style="width:30px; height:30px;" ng-src="{{ currentUser.picture || 'http://dummyimage.com/40x40/dddddd/dddddd' }}" alt="">
                 </div>
-                <div class="media-body">
+                <div class="media-body" style="overflow:hidden">
                     <form action="" ng-submit="post.addComment(post.$comment)">
                         <input type="text" class="form-control" placeholder="Write a comment..." ng-model="post.$comment.text">
                     </form>

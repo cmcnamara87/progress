@@ -1,3 +1,12 @@
+<a name="0.21.33"></a>
+### 0.21.33 (2014-12-02)
+
+
+#### Bug Fixes
+
+* **post:** switch to using snake case instead of camel case ((0f17266a))
+
+
 <a name="0.21.32"></a>
 ### 0.21.32 (2014-12-02)
 

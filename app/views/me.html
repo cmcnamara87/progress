@@ -1,0 +1,48 @@
+<div class="container-fluid" style="background:#F1F2F2">
+    <div class="row">
+        <div class="col-sm-2" style="background-color:#00182D;color:rgba(255,255,255,0.8);padding-right:0;">
+            <h3 style="color:rgba(255,255,255,0.5);font-size:11px;padding:0 15px;font-weight:normal;text-transform:uppercase">Main</h3>
+            <div class="list-group" style="color:#333">
+                <a ui-sref="me.feed" class="list-group-item" style="background:transparent;color:#eee;border:none;">
+                    <i class="fa fa-newspaper-o fa-fw"></i> My Feed</a>
+                <a class="list-group-item" style="background:transparent;color:#eee;border:none;">
+                    <i class="fa fa-group fa-fw"></i> People
+                </a>
+            </div>
+
+            <h3 style="color:rgba(255,255,255,0.5);font-size:11px;padding:0 15px;font-weight:normal;text-transform:uppercase">Projects</h3>
+            <div class="list-group" style="color:#333">
+                <a href="" tooltip="Coming soon haha" class="list-group-item" style="background:transparent;color:#eee;border:none;">
+                    <i class="fa fa-plus-circle fa-fw"></i> New Project
+                </a>
+                <a ng-repeat="project in vm.projects" class="list-group-item" ui-sref="me.project({projectId: project.id})" style="background:transparent;color:rgba(255,255,255,0.8);border:none;padding-left:33px;">
+                    {{ project.name }}
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div ui-view></div>        
+        </div>
+        
+    </div>
+</div>
+<!-- <div class="wrapper wrapper-dark">
+    <div class="container">
+
+        <div class="col-sm-8">
+
+
+            <div ng-repeat="post in posts">
+                <post></post>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+
+        </div>
+
+
+
+
+    </div>
+</div> -->

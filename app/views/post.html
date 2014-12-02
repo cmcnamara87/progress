@@ -13,9 +13,8 @@
                 <div ng-switch="post.type">
                     <div ng-switch-when="TEXT">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
-                            wrote in
-                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> wrote in
+                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -24,9 +23,8 @@
 
                     <div ng-switch-when="SCREENSHOT_COLLECTION">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
-                            uploaded a screenshot for
-                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> uploaded a screenshot for
+                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -34,9 +32,8 @@
                     </div>
                     <div ng-switch-when="STARTED_WORKING">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a>
-                            started working on
-                            <a ui-sref="user.diary({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> started working on
+                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -51,9 +48,8 @@
         </a>
         <div>
             <button class="btn btn-default btn-xs" ng-click="post.toggleLike()" ng-class="{'btn-primary': post.isLiked}">
-                <i class="fa fa-thumbs-o-up"></i> 
-                Like
-            </button>            
+                <i class="fa fa-thumbs-o-up"></i> Like
+            </button>
         </div>
     </div>
     <ul class="list-group">
@@ -85,6 +81,7 @@
                         <input type="text" class="form-control" placeholder="Write a comment..." ng-model="post.$comment.text">
                     </form>
                 </div>
+            </div>
         </li>
     </ul>
-    </div>
+</div>

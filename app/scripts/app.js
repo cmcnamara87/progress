@@ -127,7 +127,8 @@ angular
             .state('me', {
                 url: '/me',
                 abstract: true,
-                template: '<ui-view></ui-view>'
+                templateUrl: 'views/me.html',
+                controller: 'MeCtrl as vm'
             })
             .state('me.feed', {
                 url: '/feed',
@@ -144,6 +145,25 @@ angular
                 },
                 controller: 'FeedCtrl',
                 templateUrl: 'views/feed.html'
+            })
+            .state('me.project', {
+                url: '/projects/:projectId',
+                resolve: {
+                    project: ['Restangular', '$stateParams',
+                        function(Restangular, $stateParams) {
+                            return Restangular.one('me')
+                            .one('projects', $stateParams.projectId).get();
+                        }
+                    ],
+                    posts: ['Restangular', '$stateParams', 'project',
+                        function(Restangular, $stateParams, project) {
+                            return Restangular.one('users', project.user_id)
+                            .one('projects', project.id).all('posts').getList();
+                        }
+                    ]
+                },
+                controller: 'ProjectCtrl',
+                templateUrl: 'views/project.html'
             })
             .state('landing', {
                 url: '/landing',

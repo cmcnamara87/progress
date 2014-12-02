@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <h2>{{ project.name }}</h2>
     <p><a ui-sref="user.projects({userId: project.user.id})">{{ project.user.name }}</a>
     </p>
@@ -15,12 +15,130 @@
     </div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="col-sm-8">
-			<div ng-repeat="post in posts" ng-show="post.type == 'SCREENSHOT_COLLECTION'">
-		        <post></post>
-		    </div>		
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div ng-repeat="post in posts" ng-show="post.type == 'SCREENSHOT_COLLECTION'">
+                <post></post>
+            </div>      
+        </div>
+    </div>
     
 </div>
+ -->
+
+
+
+<div class="row">
+    <div class="col-sm-9" style="padding-top: 20px;">
+        <div class="row">
+
+            <h3 style="margin:20px;margin-top:0;">{{ project.name }}</h3>
+            <div class="col-lg-6">
+                <form role="form">
+                    <!-- im here! 
+                    <pre>
+                        {{ dropSupported | json }}
+                    </pre>
+                    <pre>
+                        ng-show="dropSupported"
+                    </pre> -->
+                    <div class="panel panel-default" ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function" >
+                        <div class="panel-body">
+
+                            <!-- <input type="text" ng-model="myModelObj"> -->
+                            <!-- <input type="file" ng-file-select="onFileSelect($files)"> -->
+                            <!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"> -->
+                            <!-- <div >drop files here</div> -->
+                            <!-- <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div> -->
+                            <!-- <button ng-click="upload.abort()">Cancel Upload</button> -->
+
+                            <textarea msd-elastic="\n" placeholder="What's going on?" ng-model="newPostText" class="form-control"></textarea>
+
+                            <ul ng-show="files.length" class="list-unstyled" style="margin-top: 10px;">
+                                <li ng-repeat="file in files" class="text-muted">
+                                    {{ file.name }}
+                                </li>
+                            </ul>
+                            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+
+                        </div>
+                        <div class="panel-footer text-right">
+                            <div class="pull-left">
+                                <a class="btn btn-link">
+                                    {{ project.name }}
+                                </a>
+                            </div>
+
+                            <button class="btn btn-link" ng-file-select="onFileSelect($files)" data-multiple="false">
+                                <i class="fa fa-image"></i>
+                            </button>
+                            <button class="btn btn-primary" ng-click="postUpdate(newPostText, files)" ng-disabled="newPostText.length==0">Post</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div ng-repeat="post in posts">
+                    <div ng-if="$index % 2 == 0">
+                        <post></post>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div ng-repeat="post in posts">
+                    <div ng-if="$index % 2">
+                        <post></post>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3" style="background-color:#E3E6E8;padding-top:20px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                        Time
+                    </h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Coming Soon
+                </li>
+            </ul>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                        Chart
+                    </h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Probably Coming Soon
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<!-- <div class="wrapper wrapper-dark">
+    <div class="container">
+
+        <div class="col-sm-8">
+
+
+            <div ng-repeat="post in posts">
+                <post></post>
+            </div>
+        </div>
+        <div class="col-sm-4">
+
+
+        </div>
+
+
+
+
+    </div>
+</div> -->

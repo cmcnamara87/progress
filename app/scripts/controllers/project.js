@@ -58,7 +58,8 @@ angular.module('progressClientApp')
         vm.posts.unshift(tempPost);
 
         Restangular.one('me').all('posts').post({
-            text: text
+            text: text,
+            project_id: $scope.project.id
         }).then(function(post) {
             angular.copy(post, tempPost);
         });

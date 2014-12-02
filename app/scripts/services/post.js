@@ -26,7 +26,7 @@ angular.module('progressClientApp')
                     if(like) {
                         post.isLiked = true;
                     }
-                    if(post.userId === currentUser.id) {
+                    if(post.user_id === currentUser.id) {
                         post.isOwner = true;
                     }
                     stopListening();
@@ -63,7 +63,7 @@ angular.module('progressClientApp')
                 $analytics.eventTrack('post-like', {category: 'post'});
                 var likeTemp = {};
                 if($rootScope.currentUser) {
-                    likeTemp.userId = $rootScope.currentUser.id;
+                    likeTemp.user_id = $rootScope.currentUser.id;
                     likeTemp.user = $rootScope.currentUser;
                 }
                 post.isLiked = true;

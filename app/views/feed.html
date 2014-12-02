@@ -60,7 +60,7 @@
                     </form>
 
                     <div ng-repeat="post in posts">
-                        <div ng-hide="$index % 2">
+                        <div ng-if="$index % 2 == 0">
                             <post></post>
                         </div>
 
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div ng-repeat="post in posts">
-                        <div ng-show="$index % 2">
+                        <div ng-if="$index % 2">
                             <post></post>
                         </div>
                     </div>

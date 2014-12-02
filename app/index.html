@@ -81,7 +81,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li ng-show="currentUser.id">
-                                <a ui-sref="user.projects({userId: currentUser.id})">
+                                <a ui-sref="me.user.projects({userId: currentUser.id})">
                                     <img style="height: 18px; width: 18px;" ng-src="{{ currentUser.picture }}" alt=""> &nbsp; {{ currentUser.name }}
                                 </a>
                             </li>

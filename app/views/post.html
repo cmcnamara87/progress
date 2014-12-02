@@ -13,8 +13,8 @@
                 <div ng-switch="post.type">
                     <div ng-switch-when="TEXT">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> wrote in
-                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="me.user.projects({userId: post.user.id })">{{ post.user.name }}</a> wrote in
+                            <a ui-sref="me.user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -23,8 +23,8 @@
 
                     <div ng-switch-when="SCREENSHOT_COLLECTION">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> uploaded a screenshot for
-                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="me.user.projects({userId: post.user.id })">{{ post.user.name }}</a> uploaded a screenshot for
+                            <a ui-sref="me.user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -32,8 +32,8 @@
                     </div>
                     <div ng-switch-when="STARTED_WORKING">
                         <p style="margin-bottom: 3px;">
-                            <a ui-sref="user.projects({userId: post.user.id })">{{ post.user.name }}</a> started working on
-                            <a ui-sref="user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
+                            <a ui-sref="me.user.projects({userId: post.user.id })">{{ post.user.name }}</a> started working on
+                            <a ui-sref="me.user.project({userId: post.user.id, projectId: post.project.id })">{{ post.project.name }}</a>
                         </p>
                         <p class="text-muted">
                             <span am-time-ago="post.created" am-preprocess="unix"></span>
@@ -55,7 +55,7 @@
     <ul class="list-group">
         <li class="list-group-item" ng-show="post.likes.length">
             <span ng-repeat="like in post.likes">
-                <a ui-sref="user.projects({userId: like.user.id })">{{ like.user.name }}</a><span ng-hide="$last || post.likes.length < 2">, 
+                <a ui-sref="me.user.projects({userId: like.user.id })">{{ like.user.name }}</a><span ng-hide="$last || post.likes.length < 2">, 
                 </span>
             </span>
             like this.

@@ -47,7 +47,7 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div ng-repeat="project in projects | orderBy:'-seconds'" style="padding: 20px; border-bottom: 1px solid #eee">
                     <h2>
-                        <a ui-sref="user.diary({userId: project.user.id, projectId: project.id })">
+                        <a ui-sref="me.user.project({userId: project.user.id, projectId: project.id })">
                             {{ project.name }}    
                         </a>
                     </h2>

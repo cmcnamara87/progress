@@ -183,12 +183,12 @@ angular
                 controller: 'RegisterCtrl',
                 templateUrl: 'views/register.html'
             })
-            .state('user', {
+            .state('me.user', {
                 abstract: true,
                 url: '/users/:userId',
                 template: '<ui-view></ui-view>'
             })
-            .state('user.projects', {
+            .state('me.user.projects', {
                 url: '/projects',
                 resolve: {
                     projects: ['Restangular', '$stateParams',
@@ -203,6 +203,21 @@ angular
                 controller: 'ProjectsCtrl',
                 templateUrl: 'views/projects.html'
             })
+            // .state('user.projects', {
+            //     url: '/projects',
+            //     resolve: {
+            //         projects: ['Restangular', '$stateParams',
+            //             function(Restangular, $stateParams) {
+            //                 return Restangular.one('users', $stateParams.userId).all('projects').getList();
+            //             }
+            //         ],
+            //         user: ['Restangular', '$stateParams', function(Restangular, $stateParams) {
+            //             return Restangular.one('users', $stateParams.userId).get();
+            //         }]
+            //     },
+            //     controller: 'ProjectsCtrl',
+            //     templateUrl: 'views/projects.html'
+            // })
             .state('post', {
                 url: '/posts/:postId',
                 resolve: {
@@ -215,7 +230,7 @@ angular
                 controller: 'SinglePostCtrl',
                 templateUrl: 'views/singlepost.html'
             })
-            .state('user.project', {
+            .state('me.user.project', {
                 url: '/projects/:projectId?timelapse',
                 resolve: {
                     project: ['Restangular', '$stateParams',

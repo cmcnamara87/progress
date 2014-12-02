@@ -28,7 +28,7 @@
                         </div>
                         <div class="panel-footer text-right">
                             <div class="pull-left">
-                                <a ui-sref="user.project({ userId: currentUser.id, projectId: activeProject.id  })" class="btn btn-link">
+                                <a ui-sref="me.user.project({ userId: currentUser.id, projectId: activeProject.id  })" class="btn btn-link">
                                     <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div>{{ activeProject.name }}
                                 </a>
                             </div>
@@ -72,7 +72,7 @@
                     <li class="list-group-item" ng-repeat="user in leaderboard | orderBy:'-seconds'">
                         <div>
                             <strong>#{{ $index + 1 }}</strong>
-                            <a ui-sref="user.projects({userId: user.id})">
+                            <a ui-sref="me.user.projects({userId: user.id})">
                                 {{ user.name }}
                             </a> - {{ user.time }}
                         </div>
@@ -92,9 +92,9 @@
                     <li class="list-group-item" ng-repeat="user in online">
                         <div>
                             <div style="display: inline-block; width: 10px; height: 10px; background-color: #AAEE00; margin-right:3px;"></div>
-                            <a ui-sref="user.projects({userId: user.id})">
+                            <a ui-sref="me.user.projects({userId: user.id})">
                                 {{ user.name }}
-                            </a> - <a ui-sref="user.project({ userId: user.id, projectId: user.activeProject.id  })">{{ user.activeProject.name }}</a>
+                            </a> - <a ui-sref="me.user.project({ userId: user.id, projectId: user.activeProject.id  })">{{ user.activeProject.name }}</a>
                             <div class="text-muted" am-time-ago="user.lastProgress.created" am-preprocess="unix"></div>
                         </div>
                     </li>
@@ -114,7 +114,7 @@
                     <li class="list-group-item" ng-repeat="user in offline">
                         <div>
                             <div style="display: inline-block; width: 10px; height: 10px; background-color: #ddd; margin-right:3px;"></div>
-                            <a ui-sref="user.projects({userId: user.id})">
+                            <a ui-sref="me.user.projects({userId: user.id})">
                                 {{ user.name }}
                             </a>
                         </div>

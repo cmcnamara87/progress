@@ -34,7 +34,7 @@
 
             <h3 style="margin:20px;margin-top:0;">{{ project.name }}</h3>
             <div class="col-lg-6">
-                <form role="form">
+                <form role="form" ng-show="currentUser.id === project.user_id">
                     <!-- im here! 
                     <pre>
                         {{ dropSupported | json }}

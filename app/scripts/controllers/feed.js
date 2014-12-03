@@ -111,7 +111,8 @@ angular.module('progressClientApp')
                 //headers: {'header-key': 'header-value'},
                 withCredentials: true,
                 data: {
-                    text: text
+                    text: text,
+                    project_id: vm.activeProject.id 
                 },
                 file: file, // or list of files ($files) for html5 only
                 //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)

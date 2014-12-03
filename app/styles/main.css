@@ -21,6 +21,43 @@
   background: #f0ad4e;
 }
 
+
+.information .panel-body {
+  padding: 50px 60px;
+}
+.information h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 28px;
+  text-align: center;
+}
+.information h3 {
+  text-align: center;
+  color: #888;
+  font-weight: 200;
+  font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.information figure {
+  text-align: center;
+}
+.information label {
+  text-transform: uppercase;
+  color: #aaa;
+  font-size: 11px;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+.information .sign-up {
+  margin-top: 40px;
+  text-align: center;
+}
+.information .sign-up .btn {
+  text-transform: uppercase;
+  padding: 10px 35px;
+  font-size: 12px;
+}
 .sidebar .list-group-item {
   border-radius: 0;
 }

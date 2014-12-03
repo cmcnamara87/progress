@@ -1,20 +1,42 @@
-<div class="container">
-    <form action="" ng-hide="isRegistering">
-        <div class="form-group">
-            <label for="">Full Name</label>
-            <input type="text" class="form-control" placeholder="full name" ng-model="user.name">
+<div style="background-color:#eee;padding-top:40px;padding-bottom:40px;" class="information">
+    <div class="container">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="text-center">Sign up today, it's free</h2>
+                    <p class="lead text-center text-muted">Track your project from beginning for end.</p>
+                    <form action="" ng-hide="isRegistering">
+                        <div class="form-group">
+                            <label for="">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Full name" ng-model="user.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" placeholder="Email address" ng-model="user.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm password">
+                        </div>
+                        <div class="sign-up">
+                            <button class="btn btn-primary" ng-click="register(user)">Register Now</button>    
+                        </div>
+                        
+                    </form>
+                    <div ng-show="isRegistering" class="alert alert-warning">
+                        <strong>Registering</strong> This should only take a moment.
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="">Email</label>
-            <input type="text" class="form-control" placeholder="email address" ng-model="user.email">
-        </div>
-        <div class="form-group">
-            <label for="">Password</label>
-            <input type="password" class="form-control" placeholder="password" ng-model="user.password">
-        </div>
-        <button class="btn btn-primary" ng-click="register(user)">Sign Up</button>
-    </form>
-    <div ng-show="isRegistering" class="alert alert-warning">
-        <strong>Registering</strong> This should only take a moment.
     </div>
 </div>

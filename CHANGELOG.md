@@ -1,3 +1,12 @@
+<a name="0.21.43"></a>
+### 0.21.43 (2014-12-06)
+
+
+#### Bug Fixes
+
+* **posts:** fix embedded images being too large ((49678c1e))
+
+
 <a name="0.21.42"></a>
 ### 0.21.42 (2014-12-06)
 

@@ -21,6 +21,10 @@
   background: #f0ad4e;
 }
 
+.panel .img {
+  max-width: 100%;
+}
+
 
 .information .panel-body {
   padding: 50px 60px;

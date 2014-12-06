@@ -1,3 +1,12 @@
+<a name="0.21.42"></a>
+### 0.21.42 (2014-12-06)
+
+
+#### Bug Fixes
+
+* **posts:** fix images going outside of panel ((b946312e))
+
+
 <a name="0.21.41"></a>
 ### 0.21.41 (2014-12-03)
 
